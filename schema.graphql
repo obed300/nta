@@ -1,0 +1,5057 @@
+schema {
+	query: Query
+	mutation: Mutation
+}
+
+interface Error {
+	message: String!
+}
+
+type ActivateArticleTemplatePayload {
+	callResult: CallResult
+}
+
+type ActivateDashboardPayload {
+	callResult: CallResult
+}
+
+type ActivateEmailTemplatePayload {
+	callResult: CallResult
+}
+
+type ActivateSmsTemplatePayload {
+	callResult: CallResult
+}
+
+type Alumni {
+	firstName: String!
+	otherNames: String!
+	surname: String!
+	dateOfBirth: String
+	profilePictureUrl: String
+	phoneNumber1: String!
+	phoneNumber2: String!
+	whatsAppNumber: String!
+	email: String!
+	basicSchoolCompletedId: Long!
+	basicSchoolCompleted: School!
+	yearCompleted: Int!
+	currentStatus: String
+	gender: String
+	otherStatus: String
+	occupationId: Long
+	occupation: Occupation
+	currentInstitution: String
+	category: String
+	otherCategory: String
+	programOfStudy: String
+	currentYear: String
+	currentPlaceOfWork: String
+	businessType: String
+	businessDuration: String
+	countryId: Long
+	country: Country
+	regionOfResidenceId: Long
+	regionOfResidence: Region
+	username: String
+	password: String
+	password2: String
+	isProfileCompleted: Boolean
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type AlumniEvent {
+	typeId: Long!
+	type: AlumniEventType!
+	name: String!
+	startDate: DateTime!
+	endDate: DateTime!
+	description: String!
+	location: String
+	imageUrl: String
+	article: String
+	publish: Boolean!
+	datePublished: DateTime
+	permitSignup: Boolean!
+	signupStarts: DateTime
+	signupEnds: DateTime
+	assessmentStarts: DateTime
+	duration: String
+	smsTemplateId: Long
+	smsTemplate: SmsTemplate
+	countryId: Long!
+	country: EdifyCountry!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type AlumniEventType {
+	name: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type AlumnisCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Alumni!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type ArticleTemplate {
+	name: String!
+	notes: String!
+	content: String!
+	category: String!
+	isSystemTemplate: Boolean!
+	active: Boolean!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type ArticleTemplatesByCategoryCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [ArticleTemplate!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type ArticleTemplatesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [ArticleTemplate!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type CallResult {
+	success: Boolean!
+	message: String
+	code: Int!
+}
+
+type CallResultOfListOfReportParameter {
+	success: Boolean!
+	message: String
+	result: [ReportParameter]
+	code: Int!
+}
+
+type CallResultOfMe {
+	success: Boolean!
+	message: String
+	result: Me
+	code: Int!
+}
+
+type CallResultOfString {
+	success: Boolean!
+	message: String
+	result: String
+	code: Int!
+}
+
+"Information about the offset pagination."
+type CollectionSegmentInfo {
+	"Indicates whether more items exist following the set defined by the clients arguments."
+	hasNextPage: Boolean!
+	"Indicates whether more items exist prior the set defined by the clients arguments."
+	hasPreviousPage: Boolean!
+}
+
+type ContactUs {
+	name: String!
+	email: String!
+	subject: String!
+	message: String!
+	isRead: Boolean!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type ContactUsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [ContactUs!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type CountriesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Country!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type Country {
+	name: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type CreateAlumniEventPayload {
+	callResult: CallResult
+}
+
+type CreateAlumniPayload {
+	callResult: CallResult
+}
+
+type CreateArticleTemplatePayload {
+	callResult: CallResult
+}
+
+type CreateContactUsPayload {
+	callResult: CallResult
+}
+
+type CreateCountryPayload {
+	callResult: CallResult
+}
+
+type CreateDashboardPayload {
+	callResult: CallResult
+}
+
+type CreateDepartmentPayload {
+	callResult: CallResult
+}
+
+type CreateDistrictPayload {
+	callResult: CallResult
+}
+
+type CreateEdifyCountryPayload {
+	callResult: CallResult
+}
+
+type CreateEmailCampaignPayload {
+	callResult: CallResult
+}
+
+type CreateEmailTemplatePayload {
+	callResult: CallResult
+}
+
+type CreateEventRegistrationNewPayload {
+	callResult: CallResult
+}
+
+type CreateEventRegistrationPayload {
+	callResult: CallResult
+}
+
+type CreateEventTypePayload {
+	callResult: CallResult
+}
+
+type CreateFbCampaignPayload {
+	callResult: CallResult
+}
+
+type CreateLeaderPayload {
+	callResult: CallResult
+}
+
+type CreateLeadershipRolePayload {
+	callResult: CallResult
+}
+
+type CreateMemberPayload {
+	callResult: CallResult
+}
+
+type CreateNewsEntryPayload {
+	callResult: CallResult
+}
+
+type CreateOccupationPayload {
+	callResult: CallResult
+}
+
+type CreateRegionPayload {
+	callResult: CallResult
+}
+
+type CreateReportPayload {
+	callResult: CallResult
+}
+
+type CreateRolePayload {
+	callResult: CallResult
+}
+
+type CreateSchoolPayload {
+	callResult: CallResult
+}
+
+type CreateSmsCampaignPayload {
+	callResult: CallResult
+}
+
+type CreateSmsTemplatePayload {
+	callResult: CallResult
+}
+
+type CreateStoryPayload {
+	callResult: CallResult
+}
+
+type CreateTwitterCampaignPayload {
+	callResult: CallResult
+}
+
+type CreateUserPayload {
+	callResult: CallResult
+}
+
+type CreateUserStatusPayload {
+	callResult: CallResult
+}
+
+type Dashboard {
+	name: String!
+	description: String!
+	viewer: String!
+	formDefinition: JsonDocument
+	active: Boolean!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type DashboardIntEntry {
+	name: String!
+	value: Int!
+}
+
+type DashboardIntEntry2 {
+	parent: String!
+	child: String!
+	value: Int!
+}
+
+"A segment of a collection."
+type DashboardsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Dashboard!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type DeactivateArticleTemplatePayload {
+	callResult: CallResult
+}
+
+type DeactivateDashboardPayload {
+	callResult: CallResult
+}
+
+type DeactivateEmailTemplatePayload {
+	callResult: CallResult
+}
+
+type DeactivateSmsTemplatePayload {
+	callResult: CallResult
+}
+
+type DeleteAlumniEventPayload {
+	callResult: CallResult
+}
+
+type DeleteArticleTemplatePayload {
+	callResult: CallResult
+}
+
+type DeleteContactUsPayload {
+	callResult: CallResult
+}
+
+type DeleteCountryPayload {
+	callResult: CallResult
+}
+
+type DeleteDashboardPayload {
+	callResult: CallResult
+}
+
+type DeleteDepartmentPayload {
+	callResult: CallResult
+}
+
+type DeleteDistrictPayload {
+	callResult: CallResult
+}
+
+type DeleteEdifyCountryPayload {
+	callResult: CallResult
+}
+
+type DeleteEmailCampaignPayload {
+	callResult: CallResult
+}
+
+type DeleteEmailTemplatePayload {
+	callResult: CallResult
+}
+
+type DeleteEventRegistrationPayload {
+	callResult: CallResult
+}
+
+type DeleteEventTypePayload {
+	callResult: CallResult
+}
+
+type DeleteFbCampaignPayload {
+	callResult: CallResult
+}
+
+type DeleteLeaderPayload {
+	callResult: CallResult
+}
+
+type DeleteLeadershipRolePayload {
+	callResult: CallResult
+}
+
+type DeleteMemberPayload {
+	callResult: CallResult
+}
+
+type DeleteNewsEntryPayload {
+	callResult: CallResult
+}
+
+type DeleteOccupationPayload {
+	callResult: CallResult
+}
+
+type DeleteRegionPayload {
+	callResult: CallResult
+}
+
+type DeleteReportPayload {
+	callResult: CallResult
+}
+
+type DeleteRolePayload {
+	callResult: CallResult
+}
+
+type DeleteSchoolPayload {
+	callResult: CallResult
+}
+
+type DeleteSmsCampaignPayload {
+	callResult: CallResult
+}
+
+type DeleteSmsTemplatePayload {
+	callResult: CallResult
+}
+
+type DeleteStoryPayload {
+	callResult: CallResult
+}
+
+type DeleteTwitterCampaignPayload {
+	callResult: CallResult
+}
+
+type DeleteUserPayload {
+	callResult: CallResult
+}
+
+type DeleteUserStatusPayload {
+	callResult: CallResult
+}
+
+type Department {
+	name: String!
+	notes: String!
+	edifyCountryId: Long!
+	edifyCountry: EdifyCountry!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type DepartmentsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Department!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type District {
+	regionId: Long
+	region: Region
+	name: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type DistrictsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [District!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type EdifyCountriesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [EdifyCountry!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type EdifyCountry {
+	name: String!
+	flagUrl: String
+	notes: String!
+	countryId: Long!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type EmailCampaign {
+	name: String!
+	subject: String!
+	message: String!
+	emails: [String!]!
+	schools: [Long!]!
+	occupations: [Long!]!
+	regionsOfResidence: [Long!]!
+	dataFileUrl: String
+	active: Boolean!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date!
+	endDate: Date
+	time: TimeSpan!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type EmailCampaignFeed {
+	campaignId: Long!
+	campaign: EmailCampaign!
+	activity: CampaignEvent!
+	type: EventType!
+	title: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type EmailCampaignFeedsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [EmailCampaignFeed!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type EmailCampaignRun {
+	campaignId: Long!
+	campaign: EmailCampaign!
+	numberOfEmails: Int!
+	query: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type EmailCampaignRunsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [EmailCampaignRun!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type EmailCampaignsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [EmailCampaign!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type EmailTemplate {
+	name: String!
+	notes: String!
+	subject: String!
+	message: String!
+	category: String!
+	isSystemTemplate: Boolean!
+	active: Boolean!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type EmailTemplatesByCategoryCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [EmailTemplate!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type EmailTemplatesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [EmailTemplate!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type EventEntriesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [AlumniEvent!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type EventRegistration {
+	eventId: Long!
+	alumniId: Long!
+	status: String!
+	duration: String
+	cvUrl: String
+	files: String
+	registrationData: String
+	assessmentData: String
+	reviewData: String
+	dateRegistered: DateTime
+	attended: Boolean
+	eventEntry: AlumniEvent!
+	alumni: Alumni!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type EventTypesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [AlumniEventType!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type FbCampaign {
+	name: String!
+	message: String!
+	active: Boolean!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date!
+	endDate: Date
+	time: TimeSpan!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type FbCampaignFeed {
+	campaignId: Long!
+	campaign: FbCampaign!
+	activity: CampaignEvent!
+	type: EventType!
+	title: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type FbCampaignFeedsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [FbCampaignFeed!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type FbCampaignRun {
+	campaignId: Long!
+	campaign: FbCampaign!
+	numberOfViews: Int!
+	query: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type FbCampaignRunsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [FbCampaignRun!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type FbCampaignsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [FbCampaign!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type FetchEventRegistrationsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [EventRegistration!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type GeneralError implements Error {
+	message: String!
+}
+
+type JsonDocument {
+	rootElement: JSON!
+}
+
+type Leader {
+	memberId: Long!
+	member: Alumni!
+	position: String!
+	photoUrl: String
+	startDate: String
+	endDate: String
+	article: String
+	notes: String
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type LeadersCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Leader!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type LeadershipRole {
+	name: String!
+	notes: String
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type LeadershipRolesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [LeadershipRole!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type LockUserPayload {
+	callResult: CallResult
+}
+
+type MarkEmailAsReadPayload {
+	callResult: CallResult
+}
+
+type MarkEmailAsUnreadPayload {
+	callResult: CallResult
+}
+
+type MarkNotificationsAsReadPayload {
+	callResult: CallResult
+}
+
+type Me {
+	id: Long!
+	role: String!
+	roleId: Long!
+	department: String!
+	departmentId: Long!
+	permissions: [String!]!
+	type: UserType!
+	activeDashboardId: Long
+	firstName: String!
+	lastName: String!
+	middleNames: String!
+}
+
+type Member {
+	name: String!
+	username: String
+	password: String
+	password2: String
+	organization: String!
+	phoneNumber: String!
+	ghanaCardNumber: String
+	email: String!
+	address: String!
+	employeeDetails: String
+	operationalArea: String!
+	commencementYear: String!
+	redgNo: String!
+	category: String
+	additionalInformation: String
+	productMaterialCategory: String
+	description: String!
+	membershipDeclaration: String
+	registeredBy: String
+	status: MembershipStatus!
+	reason: String
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type MembersCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Member!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type Mutation {
+	uploadAlumni(input: UploadAlumniInput): UploadAlumniPayload! @cost(weight: "10")
+	createAlumni(input: CreateAlumniInput): CreateAlumniPayload! @cost(weight: "10")
+	createLeadershipRole(input: CreateLeadershipRoleInput): CreateLeadershipRolePayload!
+		@cost(weight: "10")
+	updateLeadershipRole(input: UpdateLeadershipRoleInput): UpdateLeadershipRolePayload!
+		@cost(weight: "10")
+	deleteLeadershipRole(input: DeleteLeadershipRoleInput): DeleteLeadershipRolePayload!
+		@cost(weight: "10")
+	createLeader(input: CreateLeaderInput): CreateLeaderPayload! @cost(weight: "10")
+	updateLeader(input: UpdateLeaderInput): UpdateLeaderPayload! @cost(weight: "10")
+	deleteLeader(input: DeleteLeaderInput): DeleteLeaderPayload! @cost(weight: "10")
+	createStory(input: CreateStoryInput): CreateStoryPayload! @cost(weight: "10")
+	updateStory(input: UpdateStoryInput): UpdateStoryPayload! @cost(weight: "10")
+	deleteStory(input: DeleteStoryInput): DeleteStoryPayload! @cost(weight: "10")
+	createSmsCampaign(input: CreateSmsCampaignInput): CreateSmsCampaignPayload! @cost(weight: "10")
+	updateSmsCampaign(input: UpdateSmsCampaignInput): UpdateSmsCampaignPayload! @cost(weight: "10")
+	deleteSmsCampaign(input: DeleteSmsCampaignInput): DeleteSmsCampaignPayload! @cost(weight: "10")
+	suspendSmsCampaign(input: SuspendSmsCampaignInput): SuspendSmsCampaignPayload! @cost(weight: "10")
+	resumeSmsCampaign(input: ResumeSmsCampaignInput): ResumeSmsCampaignPayload! @cost(weight: "10")
+	createEmailCampaign(input: CreateEmailCampaignInput): CreateEmailCampaignPayload!
+		@cost(weight: "10")
+	updateEmailCampaign(input: UpdateEmailCampaignInput): UpdateEmailCampaignPayload!
+		@cost(weight: "10")
+	deleteEmailCampaign(input: DeleteEmailCampaignInput): DeleteEmailCampaignPayload!
+		@cost(weight: "10")
+	suspendEmailCampaign(input: SuspendEmailCampaignInput): SuspendEmailCampaignPayload!
+		@cost(weight: "10")
+	resumeEmailCampaign(input: ResumeEmailCampaignInput): ResumeEmailCampaignPayload!
+		@cost(weight: "10")
+	createFbCampaign(input: CreateFbCampaignInput): CreateFbCampaignPayload! @cost(weight: "10")
+	updateFbCampaign(input: UpdateFbCampaignInput): UpdateFbCampaignPayload! @cost(weight: "10")
+	deleteFbCampaign(input: DeleteFbCampaignInput): DeleteFbCampaignPayload! @cost(weight: "10")
+	suspendFbCampaign(input: SuspendFbCampaignInput): SuspendFbCampaignPayload! @cost(weight: "10")
+	resumeFbCampaign(input: ResumeFbCampaignInput): ResumeFbCampaignPayload! @cost(weight: "10")
+	createTwitterCampaign(input: CreateTwitterCampaignInput): CreateTwitterCampaignPayload!
+		@cost(weight: "10")
+	updateTwitterCampaign(input: UpdateTwitterCampaignInput): UpdateTwitterCampaignPayload!
+		@cost(weight: "10")
+	deleteTwitterCampaign(input: DeleteTwitterCampaignInput): DeleteTwitterCampaignPayload!
+		@cost(weight: "10")
+	suspendTwitterCampaign(input: SuspendTwitterCampaignInput): SuspendTwitterCampaignPayload!
+		@cost(weight: "10")
+	resumeTwitterCampaign(input: ResumeTwitterCampaignInput): ResumeTwitterCampaignPayload!
+		@cost(weight: "10")
+	createDashboard(input: CreateDashboardInput): CreateDashboardPayload! @cost(weight: "10")
+	updateDashboard(input: UpdateDashboardInput): UpdateDashboardPayload! @cost(weight: "10")
+	deleteDashboard(input: DeleteDashboardInput): DeleteDashboardPayload! @cost(weight: "10")
+	activateDashboard(input: ActivateDashboardInput): ActivateDashboardPayload! @cost(weight: "10")
+	deactivateDashboard(input: DeactivateDashboardInput): DeactivateDashboardPayload!
+		@cost(weight: "10")
+	createEdifyCountry(input: CreateEdifyCountryInput): CreateEdifyCountryPayload! @cost(weight: "10")
+	updateEdifyCountry(input: UpdateEdifyCountryInput): UpdateEdifyCountryPayload! @cost(weight: "10")
+	deleteEdifyCountry(input: DeleteEdifyCountryInput): DeleteEdifyCountryPayload! @cost(weight: "10")
+	createDepartment(input: CreateDepartmentInput): CreateDepartmentPayload! @cost(weight: "10")
+	updateDepartment(input: UpdateDepartmentInput): UpdateDepartmentPayload! @cost(weight: "10")
+	deleteDepartment(input: DeleteDepartmentInput): DeleteDepartmentPayload! @cost(weight: "10")
+	uploadSchools(input: UploadSchoolsInput): UploadSchoolsPayload! @cost(weight: "10")
+	createSchool(input: CreateSchoolInput): CreateSchoolPayload! @cost(weight: "10")
+	updateSchool(input: UpdateSchoolInput): UpdateSchoolPayload! @cost(weight: "10")
+	deleteSchool(input: DeleteSchoolInput): DeleteSchoolPayload! @cost(weight: "10")
+	createOccupation(input: CreateOccupationInput): CreateOccupationPayload! @cost(weight: "10")
+	updateOccupation(input: UpdateOccupationInput): UpdateOccupationPayload! @cost(weight: "10")
+	deleteOccupation(input: DeleteOccupationInput): DeleteOccupationPayload! @cost(weight: "10")
+	createCountry(input: CreateCountryInput): CreateCountryPayload! @cost(weight: "10")
+	updateCountry(input: UpdateCountryInput): UpdateCountryPayload! @cost(weight: "10")
+	deleteCountry(input: DeleteCountryInput): DeleteCountryPayload! @cost(weight: "10")
+	createRegion(input: CreateRegionInput): CreateRegionPayload! @cost(weight: "10")
+	updateRegion(input: UpdateRegionInput): UpdateRegionPayload! @cost(weight: "10")
+	deleteRegion(input: DeleteRegionInput): DeleteRegionPayload! @cost(weight: "10")
+	createDistrict(input: CreateDistrictInput): CreateDistrictPayload! @cost(weight: "10")
+	updateDistrict(input: UpdateDistrictInput): UpdateDistrictPayload! @cost(weight: "10")
+	deleteDistrict(input: DeleteDistrictInput): DeleteDistrictPayload! @cost(weight: "10")
+	createNewsEntry(input: CreateNewsEntryInput): CreateNewsEntryPayload! @cost(weight: "10")
+	updateNewsEntry(input: UpdateNewsEntryInput): UpdateNewsEntryPayload! @cost(weight: "10")
+	deleteNewsEntry(input: DeleteNewsEntryInput): DeleteNewsEntryPayload! @cost(weight: "10")
+	createContactUs(input: CreateContactUsInput): CreateContactUsPayload! @cost(weight: "10")
+	updateContactUs(input: UpdateContactUsInput): UpdateContactUsPayload! @cost(weight: "10")
+	deleteContactUs(input: DeleteContactUsInput): DeleteContactUsPayload! @cost(weight: "10")
+	createEventType(input: CreateEventTypeInput): CreateEventTypePayload! @cost(weight: "10")
+	updateEventType(input: UpdateEventTypeInput): UpdateEventTypePayload! @cost(weight: "10")
+	deleteEventType(input: DeleteEventTypeInput): DeleteEventTypePayload! @cost(weight: "10")
+	createAlumniEvent(input: CreateAlumniEventInput): CreateAlumniEventPayload! @cost(weight: "10")
+	updateAlumniEvent(input: UpdateAlumniEventInput): UpdateAlumniEventPayload! @cost(weight: "10")
+	deleteAlumniEvent(input: DeleteAlumniEventInput): DeleteAlumniEventPayload! @cost(weight: "10")
+	uploadEventAttendees(input: UploadEventAttendeesInput): UploadEventAttendeesPayload!
+		@cost(weight: "10")
+	uploadEventAttendeesNew(input: UploadEventAttendeesNewInput): UploadEventAttendeesNewPayload!
+		@cost(weight: "10")
+	updateAlumniEventDate(input: UpdateAlumniEventDateInput): UpdateAlumniEventDatePayload!
+		@cost(weight: "10")
+	createEventRegistration(input: CreateEventRegistrationInput): CreateEventRegistrationPayload!
+		@cost(weight: "10")
+	createEventRegistrationNew(
+		input: CreateEventRegistrationNewInput
+	): CreateEventRegistrationNewPayload! @cost(weight: "10")
+	updateEventRegistration(input: UpdateEventRegistrationInput): UpdateEventRegistrationPayload!
+		@cost(weight: "10")
+	deleteEventRegistration(input: DeleteEventRegistrationInput): DeleteEventRegistrationPayload!
+		@cost(weight: "10")
+	createMember(input: CreateMemberInput): CreateMemberPayload! @cost(weight: "10")
+	updateMember(input: UpdateMemberInput): UpdateMemberPayload! @cost(weight: "10")
+	deleteMember(input: DeleteMemberInput): DeleteMemberPayload! @cost(weight: "10")
+	markEmailAsRead(input: MarkEmailAsReadInput): MarkEmailAsReadPayload! @cost(weight: "10")
+	markEmailAsUnread(input: MarkEmailAsUnreadInput): MarkEmailAsUnreadPayload! @cost(weight: "10")
+	queueNewSignupSms(input: QueueNewSignupSmsInput): QueueNewSignupSmsPayload! @cost(weight: "10")
+	queueNewEventRegistrationSms(
+		input: QueueNewEventRegistrationSmsInput
+	): QueueNewEventRegistrationSmsPayload! @cost(weight: "10")
+	queueTestSms(input: QueueTestSmsInput): QueueTestSmsPayload! @cost(weight: "10")
+	markNotificationsAsRead(input: MarkNotificationsAsReadInput): MarkNotificationsAsReadPayload!
+		@cost(weight: "10")
+	createReport(input: CreateReportInput): CreateReportPayload! @cost(weight: "10")
+	updateReport(input: UpdateReportInput): UpdateReportPayload! @cost(weight: "10")
+	saveReport(input: SaveReportInput): SaveReportPayload! @cost(weight: "10")
+	deleteReport(input: DeleteReportInput): DeleteReportPayload! @cost(weight: "10")
+	restartService(input: RestartServiceInput): RestartServicePayload! @cost(weight: "10")
+	createSmsTemplate(input: CreateSmsTemplateInput): CreateSmsTemplatePayload! @cost(weight: "10")
+	updateSmsTemplate(input: UpdateSmsTemplateInput): UpdateSmsTemplatePayload! @cost(weight: "10")
+	deleteSmsTemplate(input: DeleteSmsTemplateInput): DeleteSmsTemplatePayload! @cost(weight: "10")
+	activateSmsTemplate(input: ActivateSmsTemplateInput): ActivateSmsTemplatePayload!
+		@cost(weight: "10")
+	deactivateSmsTemplate(input: DeactivateSmsTemplateInput): DeactivateSmsTemplatePayload!
+		@cost(weight: "10")
+	createEmailTemplate(input: CreateEmailTemplateInput): CreateEmailTemplatePayload!
+		@cost(weight: "10")
+	updateEmailTemplate(input: UpdateEmailTemplateInput): UpdateEmailTemplatePayload!
+		@cost(weight: "10")
+	deleteEmailTemplate(input: DeleteEmailTemplateInput): DeleteEmailTemplatePayload!
+		@cost(weight: "10")
+	activateEmailTemplate(input: ActivateEmailTemplateInput): ActivateEmailTemplatePayload!
+		@cost(weight: "10")
+	deactivateEmailTemplate(input: DeactivateEmailTemplateInput): DeactivateEmailTemplatePayload!
+		@cost(weight: "10")
+	createArticleTemplate(input: CreateArticleTemplateInput): CreateArticleTemplatePayload!
+		@cost(weight: "10")
+	updateArticleTemplate(input: UpdateArticleTemplateInput): UpdateArticleTemplatePayload!
+		@cost(weight: "10")
+	deleteArticleTemplate(input: DeleteArticleTemplateInput): DeleteArticleTemplatePayload!
+		@cost(weight: "10")
+	activateArticleTemplate(input: ActivateArticleTemplateInput): ActivateArticleTemplatePayload!
+		@cost(weight: "10")
+	deactivateArticleTemplate(
+		input: DeactivateArticleTemplateInput
+	): DeactivateArticleTemplatePayload! @cost(weight: "10")
+	createRole(input: CreateRoleInput): CreateRolePayload! @cost(weight: "10")
+	updateRole(input: UpdateRoleInput): UpdateRolePayload! @cost(weight: "10")
+	deleteRole(input: DeleteRoleInput): DeleteRolePayload! @cost(weight: "10")
+	createUserStatus(input: CreateUserStatusInput): CreateUserStatusPayload! @cost(weight: "10")
+	updateUserStatus(input: UpdateUserStatusInput): UpdateUserStatusPayload! @cost(weight: "10")
+	deleteUserStatus(input: DeleteUserStatusInput): DeleteUserStatusPayload! @cost(weight: "10")
+	createUser(input: CreateUserInput): CreateUserPayload! @cost(weight: "10")
+	updateUser(input: UpdateUserInput): UpdateUserPayload! @cost(weight: "10")
+	deleteUser(input: DeleteUserInput): DeleteUserPayload! @cost(weight: "10")
+	lockUser(input: LockUserInput): LockUserPayload! @cost(weight: "10")
+	unlockUser(input: UnlockUserInput): UnlockUserPayload! @cost(weight: "10")
+	setActiveDashboard(input: SetActiveDashboardInput): SetActiveDashboardPayload! @cost(weight: "10")
+	setActiveEdifyCountry(input: SetActiveEdifyCountryInput): SetActiveEdifyCountryPayload!
+		@cost(weight: "10")
+}
+
+"A segment of a collection."
+type NewsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [NewsEntry!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type NewsEntry {
+	label: String!
+	description: String!
+	image: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type NotificationEntry {
+	userId: Long!
+	user: User!
+	entity: NotificationEntity!
+	entityId: Long
+	title: String!
+	notes: String!
+	date: DateTime!
+	dateRead: DateTime
+	isRead: Boolean!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type NotificationGroupValue {
+	entity: NotificationEntity!
+	count: Long!
+}
+
+"A segment of a collection."
+type NotificationsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [NotificationEntry!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type Occupation {
+	name: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type OccupationsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Occupation!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type Query {
+	myReports: [Report] @cost(weight: "10")
+	reportParametersFromFile(
+		input: GetReportParametersFromFileInput
+	): CallResultOfListOfReportParameter @cost(weight: "10")
+	reportParameters(input: GetReportParametersInput): CallResultOfListOfReportParameter
+		@cost(weight: "10")
+	alumnis(
+		skip: Int
+		take: Int
+		where: AlumniFilterInput @cost(weight: "10")
+		order: [AlumniSortInput!] @cost(weight: "10")
+	): AlumnisCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	leadershipRoles(
+		skip: Int
+		take: Int
+		where: LeadershipRoleFilterInput @cost(weight: "10")
+		order: [LeadershipRoleSortInput!] @cost(weight: "10")
+	): LeadershipRolesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	leaders(
+		skip: Int
+		take: Int
+		where: LeaderFilterInput @cost(weight: "10")
+		order: [LeaderSortInput!] @cost(weight: "10")
+	): LeadersCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	stories(
+		skip: Int
+		take: Int
+		where: StoryFilterInput @cost(weight: "10")
+		order: [StorySortInput!] @cost(weight: "10")
+	): StoriesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	numberOfStudents(edifyCountryId: Long): Int! @cost(weight: "10")
+	numberWithPhoneNumbers(edifyCountryId: Long): Int! @cost(weight: "10")
+	numberWithWhatsappNumbers(edifyCountryId: Long): Int! @cost(weight: "10")
+	numberWithEmail(edifyCountryId: Long): Int! @cost(weight: "10")
+	numberOfSchoolsCovered(edifyCountryId: Long): Int! @cost(weight: "10")
+	breakdownByOccupation(edifyCountryId: Long): [DashboardIntEntry!]! @cost(weight: "10")
+	breakdownByYearCompleted(edifyCountryId: Long): [DashboardIntEntry!]! @cost(weight: "10")
+	breakdownByBasicSchool(edifyCountryId: Long): [DashboardIntEntry!]! @cost(weight: "10")
+	breakdownByCountryAndRegion(edifyCountryId: Long): [DashboardIntEntry2!]! @cost(weight: "10")
+	breakdownByCountry(edifyCountryId: Long): [DashboardIntEntry!]! @cost(weight: "10")
+	alumniYears(edifyCountryId: Long): [Int!]! @cost(weight: "10")
+	attendedEventsCount(edifyCountryId: Long): [DashboardIntEntry!]! @cost(weight: "10")
+	registeredEventsCount(edifyCountryId: Long): [DashboardIntEntry!]! @cost(weight: "10")
+	missedEventsCount(edifyCountryId: Long): [DashboardIntEntry!]! @cost(weight: "10")
+	smsCampaigns(
+		skip: Int
+		take: Int
+		where: SmsCampaignFilterInput @cost(weight: "10")
+		order: [SmsCampaignSortInput!] @cost(weight: "10")
+	): SmsCampaignsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	smsCampaignFeeds(
+		skip: Int
+		take: Int
+		where: SmsCampaignFeedFilterInput @cost(weight: "10")
+		order: [SmsCampaignFeedSortInput!] @cost(weight: "10")
+	): SmsCampaignFeedsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	smsCampaignRuns(
+		skip: Int
+		take: Int
+		where: SmsCampaignRunFilterInput @cost(weight: "10")
+		order: [SmsCampaignRunSortInput!] @cost(weight: "10")
+	): SmsCampaignRunsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	emailCampaigns(
+		skip: Int
+		take: Int
+		where: EmailCampaignFilterInput @cost(weight: "10")
+		order: [EmailCampaignSortInput!] @cost(weight: "10")
+	): EmailCampaignsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	emailCampaignFeeds(
+		skip: Int
+		take: Int
+		where: EmailCampaignFeedFilterInput @cost(weight: "10")
+		order: [EmailCampaignFeedSortInput!] @cost(weight: "10")
+	): EmailCampaignFeedsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	emailCampaignRuns(
+		skip: Int
+		take: Int
+		where: EmailCampaignRunFilterInput @cost(weight: "10")
+		order: [EmailCampaignRunSortInput!] @cost(weight: "10")
+	): EmailCampaignRunsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	fbCampaigns(
+		skip: Int
+		take: Int
+		where: FbCampaignFilterInput @cost(weight: "10")
+		order: [FbCampaignSortInput!] @cost(weight: "10")
+	): FbCampaignsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	fbCampaignFeeds(
+		skip: Int
+		take: Int
+		where: FbCampaignFeedFilterInput @cost(weight: "10")
+		order: [FbCampaignFeedSortInput!] @cost(weight: "10")
+	): FbCampaignFeedsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	fbCampaignRuns(
+		skip: Int
+		take: Int
+		where: FbCampaignRunFilterInput @cost(weight: "10")
+		order: [FbCampaignRunSortInput!] @cost(weight: "10")
+	): FbCampaignRunsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	twitterCampaigns(
+		skip: Int
+		take: Int
+		where: TwitterCampaignFilterInput @cost(weight: "10")
+		order: [TwitterCampaignSortInput!] @cost(weight: "10")
+	): TwitterCampaignsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	twitterCampaignFeeds(
+		skip: Int
+		take: Int
+		where: TwitterCampaignFeedFilterInput @cost(weight: "10")
+		order: [TwitterCampaignFeedSortInput!] @cost(weight: "10")
+	): TwitterCampaignFeedsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	twitterCampaignRuns(
+		skip: Int
+		take: Int
+		where: TwitterCampaignRunFilterInput @cost(weight: "10")
+		order: [TwitterCampaignRunSortInput!] @cost(weight: "10")
+	): TwitterCampaignRunsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	dashboards(
+		skip: Int
+		take: Int
+		where: DashboardFilterInput @cost(weight: "10")
+		order: [DashboardSortInput!] @cost(weight: "10")
+	): DashboardsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	myDashboards: [Dashboard!]! @cost(weight: "10")
+	departments(
+		skip: Int
+		take: Int
+		where: DepartmentFilterInput @cost(weight: "10")
+		order: [DepartmentSortInput!] @cost(weight: "10")
+	): DepartmentsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	schools(
+		skip: Int
+		take: Int
+		where: SchoolFilterInput @cost(weight: "10")
+		order: [SchoolSortInput!] @cost(weight: "10")
+	): SchoolsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	edifyCountries(
+		skip: Int
+		take: Int
+		where: EdifyCountryFilterInput @cost(weight: "10")
+		order: [EdifyCountrySortInput!] @cost(weight: "10")
+	): EdifyCountriesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	occupations(
+		skip: Int
+		take: Int
+		where: OccupationFilterInput @cost(weight: "10")
+		order: [OccupationSortInput!] @cost(weight: "10")
+	): OccupationsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	countries(
+		skip: Int
+		take: Int
+		where: CountryFilterInput @cost(weight: "10")
+		order: [CountrySortInput!] @cost(weight: "10")
+	): CountriesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	regions(
+		skip: Int
+		take: Int
+		where: RegionFilterInput @cost(weight: "10")
+		order: [RegionSortInput!] @cost(weight: "10")
+	): RegionsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	districts(
+		skip: Int
+		take: Int
+		where: DistrictFilterInput @cost(weight: "10")
+		order: [DistrictSortInput!] @cost(weight: "10")
+	): DistrictsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	news(
+		skip: Int
+		take: Int
+		where: NewsEntryFilterInput @cost(weight: "10")
+		order: [NewsEntrySortInput!] @cost(weight: "10")
+	): NewsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	contactUs(
+		skip: Int
+		take: Int
+		where: ContactUsFilterInput @cost(weight: "10")
+		order: [ContactUsSortInput!] @cost(weight: "10")
+	): ContactUsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	eventTypes(
+		skip: Int
+		take: Int
+		where: AlumniEventTypeFilterInput @cost(weight: "10")
+		order: [AlumniEventTypeSortInput!] @cost(weight: "10")
+	): EventTypesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	eventEntries(
+		skip: Int
+		take: Int
+		where: AlumniEventFilterInput @cost(weight: "10")
+		order: [AlumniEventSortInput!] @cost(weight: "10")
+	): EventEntriesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	fetchEventRegistrations(
+		skip: Int
+		take: Int
+		where: EventRegistrationFilterInput @cost(weight: "10")
+		order: [EventRegistrationSortInput!] @cost(weight: "10")
+	): FetchEventRegistrationsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	members(
+		skip: Int
+		take: Int
+		where: MemberFilterInput @cost(weight: "10")
+		order: [MemberSortInput!] @cost(weight: "10")
+	): MembersCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	memberCategories: [String!]!
+	productMaterialCategories: [String!]!
+	notifications(
+		skip: Int
+		take: Int
+		order: [NotificationEntrySortInput!] @cost(weight: "10")
+		where: NotificationEntryFilterInput @cost(weight: "10")
+	): NotificationsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 100
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	notificationCount: Int! @cost(weight: "10")
+	notificationGroupCount: [NotificationGroupValue!]! @cost(weight: "10")
+	readReports(
+		skip: Int
+		take: Int
+		input: ReadReportsInput!
+		where: ReportDefinitionFilterInput @cost(weight: "10")
+		order: [ReportDefinitionSortInput!] @cost(weight: "10")
+	): ReadReportsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	prepareReport(input: GenerateReportInput!): CallResultOfString! @cost(weight: "10")
+	serviceFeeds(
+		skip: Int
+		take: Int
+		order: [ServiceFeedSortInput!] @cost(weight: "10")
+		where: ServiceFeedFilterInput @cost(weight: "10")
+	): ServiceFeedsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	services: [ServiceInfo!]!
+	serviceNames: [String!]!
+	smsTemplates(
+		skip: Int
+		take: Int
+		where: SmsTemplateFilterInput @cost(weight: "10")
+		order: [SmsTemplateSortInput!] @cost(weight: "10")
+	): SmsTemplatesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	emailTemplates(
+		skip: Int
+		take: Int
+		where: EmailTemplateFilterInput @cost(weight: "10")
+		order: [EmailTemplateSortInput!] @cost(weight: "10")
+	): EmailTemplatesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	articleTemplates(
+		skip: Int
+		take: Int
+		where: ArticleTemplateFilterInput @cost(weight: "10")
+		order: [ArticleTemplateSortInput!] @cost(weight: "10")
+	): ArticleTemplatesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	smsCategories: [String!]! @cost(weight: "10")
+	smsTemplatesByCategory(
+		skip: Int
+		take: Int
+		category: String!
+		where: SmsTemplateFilterInput @cost(weight: "10")
+		order: [SmsTemplateSortInput!] @cost(weight: "10")
+	): SmsTemplatesByCategoryCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	emailCategories: [String!]! @cost(weight: "10")
+	emailTemplatesByCategory(
+		skip: Int
+		take: Int
+		category: String!
+		where: EmailTemplateFilterInput @cost(weight: "10")
+		order: [EmailTemplateSortInput!] @cost(weight: "10")
+	): EmailTemplatesByCategoryCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	articleCategories: [String!]! @cost(weight: "10")
+	articleTemplatesByCategory(
+		skip: Int
+		take: Int
+		category: String!
+		where: ArticleTemplateFilterInput @cost(weight: "10")
+		order: [ArticleTemplateSortInput!] @cost(weight: "10")
+	): ArticleTemplatesByCategoryCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	users(
+		skip: Int
+		take: Int
+		where: UserFilterInput @cost(weight: "10")
+		order: [UserSortInput!] @cost(weight: "10")
+	): UsersCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	roles(
+		skip: Int
+		take: Int
+		where: RoleFilterInput @cost(weight: "10")
+		order: [RoleSortInput!] @cost(weight: "10")
+	): RolesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	userStatuses(
+		skip: Int
+		take: Int
+		where: UserStatusFilterInput @cost(weight: "10")
+		order: [UserStatusSortInput!] @cost(weight: "10")
+	): UserStatusesCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	userFeeds(
+		skip: Int
+		take: Int
+		where: UserFeedFilterInput @cost(weight: "10")
+		order: [UserFeedSortInput!] @cost(weight: "10")
+	): UserFeedsCollectionSegment
+		@listSize(
+			assumedSize: 10000
+			slicingArguments: ["take"]
+			slicingArgumentDefaultValue: 20
+			sizedFields: ["items"]
+			requireOneSlicingArgument: false
+		)
+		@cost(weight: "10")
+	permissions: [String!]!
+	me: CallResultOfMe! @cost(weight: "10")
+	currentUser: User @cost(weight: "10")
+}
+
+type QueueNewEventRegistrationSmsPayload {
+	callResult: CallResult
+}
+
+type QueueNewSignupSmsPayload {
+	callResult: CallResult
+}
+
+type QueueTestSmsPayload {
+	callResult: CallResult
+}
+
+"A segment of a collection."
+type ReadReportsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [ReportDefinition!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type Region {
+	countryId: Long!
+	country: Country!
+	name: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type RegionsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Region!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type Report {
+	id: Long!
+	name: String!
+	description: String!
+	filterForm: String!
+	isActive: Boolean!
+	category: String!
+}
+
+type ReportDefinition {
+	name: String!
+	description: String!
+	reportDefinition: String!
+	formDefinition: String!
+	parameters: String!
+	active: Boolean!
+	category: String!
+	renderer: ReportRendererType!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type ReportParameter {
+	name: String!
+	type: String!
+}
+
+type RestartServicePayload {
+	callResult: CallResult
+}
+
+type ResumeEmailCampaignPayload {
+	callResult: CallResult
+}
+
+type ResumeFbCampaignPayload {
+	callResult: CallResult
+}
+
+type ResumeSmsCampaignPayload {
+	callResult: CallResult
+}
+
+type ResumeTwitterCampaignPayload {
+	callResult: CallResult
+}
+
+type Role {
+	name: String!
+	notes: String!
+	permissions: [String!]!
+	dashboards: [Long!]!
+	reports: [Long!]!
+	edifyCountries: [Long!]!
+	active: Boolean!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type RolesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Role!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type SaveReportPayload {
+	callResult: CallResult
+}
+
+type School {
+	edifyCountryId: Long!
+	edifyCountry: EdifyCountry!
+	name: String!
+	logoUrl: String
+	districtId: Long
+	district: District
+	contactPerson: String!
+	contactPhoneNumber1: String!
+	contactPhoneNumber2: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type SchoolsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [School!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type ServiceFeed {
+	service: String!
+	activity: ServiceEvent!
+	type: EventType!
+	title: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type ServiceFeedsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [ServiceFeed!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type ServiceInfo {
+	name: String!
+	description: String!
+	code: String!
+	icon: String!
+	isService: Boolean!
+}
+
+type SetActiveDashboardPayload {
+	callResult: CallResult
+}
+
+type SetActiveEdifyCountryPayload {
+	callResult: CallResult
+}
+
+type SmsCampaign {
+	name: String!
+	message: String!
+	phoneNumbers: [String!]!
+	schools: [Long!]!
+	occupations: [Long!]!
+	regionsOfResidence: [Long!]!
+	dataFileUrl: String
+	active: Boolean!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date!
+	endDate: Date
+	time: TimeSpan!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type SmsCampaignFeed {
+	campaignId: Long!
+	campaign: SmsCampaign!
+	activity: CampaignEvent!
+	type: EventType!
+	title: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type SmsCampaignFeedsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [SmsCampaignFeed!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type SmsCampaignRun {
+	campaignId: Long!
+	campaign: SmsCampaign!
+	numberOfSmses: Int!
+	query: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type SmsCampaignRunsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [SmsCampaignRun!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type SmsCampaignsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [SmsCampaign!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type SmsTemplate {
+	name: String!
+	notes: String!
+	message: String!
+	category: String!
+	isSystemTemplate: Boolean!
+	active: Boolean!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type SmsTemplatesByCategoryCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [SmsTemplate!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type SmsTemplatesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [SmsTemplate!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type StoriesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [Story!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type Story {
+	title: String!
+	memberId: Long!
+	member: Alumni!
+	email: String
+	author: String
+	photoUrl: String
+	currentStatus: String
+	active: Boolean!
+	article: String
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type SuspendEmailCampaignPayload {
+	callResult: CallResult
+}
+
+type SuspendFbCampaignPayload {
+	callResult: CallResult
+}
+
+type SuspendSmsCampaignPayload {
+	callResult: CallResult
+}
+
+type SuspendTwitterCampaignPayload {
+	callResult: CallResult
+}
+
+type TwitterCampaign {
+	name: String!
+	message: String!
+	active: Boolean!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date!
+	endDate: Date
+	time: TimeSpan!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type TwitterCampaignFeed {
+	campaignId: Long!
+	campaign: TwitterCampaign!
+	activity: CampaignEvent!
+	type: EventType!
+	title: String!
+	notes: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type TwitterCampaignFeedsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [TwitterCampaignFeed!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type TwitterCampaignRun {
+	campaignId: Long!
+	campaign: TwitterCampaign!
+	numberOfViews: Int!
+	query: String!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type TwitterCampaignRunsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [TwitterCampaignRun!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type TwitterCampaignsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [TwitterCampaign!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type UnlockUserPayload {
+	callResult: CallResult
+}
+
+type UpdateAlumniEventDatePayload {
+	callResult: CallResult
+}
+
+type UpdateAlumniEventPayload {
+	callResult: CallResult
+}
+
+type UpdateArticleTemplatePayload {
+	callResult: CallResult
+}
+
+type UpdateContactUsPayload {
+	callResult: CallResult
+}
+
+type UpdateCountryPayload {
+	callResult: CallResult
+}
+
+type UpdateDashboardPayload {
+	callResult: CallResult
+}
+
+type UpdateDepartmentPayload {
+	callResult: CallResult
+}
+
+type UpdateDistrictPayload {
+	callResult: CallResult
+}
+
+type UpdateEdifyCountryPayload {
+	callResult: CallResult
+}
+
+type UpdateEmailCampaignPayload {
+	callResult: CallResult
+}
+
+type UpdateEmailTemplatePayload {
+	callResult: CallResult
+}
+
+type UpdateEventRegistrationPayload {
+	callResult: CallResult
+}
+
+type UpdateEventTypePayload {
+	callResult: CallResult
+}
+
+type UpdateFbCampaignPayload {
+	callResult: CallResult
+}
+
+type UpdateLeaderPayload {
+	callResult: CallResult
+}
+
+type UpdateLeadershipRolePayload {
+	callResult: CallResult
+}
+
+type UpdateMemberPayload {
+	callResult: CallResult
+}
+
+type UpdateNewsEntryPayload {
+	callResult: CallResult
+}
+
+type UpdateOccupationPayload {
+	callResult: CallResult
+}
+
+type UpdateRegionPayload {
+	callResult: CallResult
+}
+
+type UpdateReportPayload {
+	callResult: CallResult
+}
+
+type UpdateRolePayload {
+	callResult: CallResult
+}
+
+type UpdateSchoolPayload {
+	callResult: CallResult
+}
+
+type UpdateSmsCampaignPayload {
+	callResult: CallResult
+}
+
+type UpdateSmsTemplatePayload {
+	callResult: CallResult
+}
+
+type UpdateStoryPayload {
+	callResult: CallResult
+}
+
+type UpdateTwitterCampaignPayload {
+	callResult: CallResult
+}
+
+type UpdateUserPayload {
+	callResult: CallResult
+}
+
+type UpdateUserStatusPayload {
+	callResult: CallResult
+}
+
+type UploadAlumniPayload {
+	callResult: CallResult
+}
+
+type UploadEventAttendeesNewPayload {
+	callResult: CallResult
+}
+
+type UploadEventAttendeesPayload {
+	callResult: CallResult
+}
+
+type UploadSchoolsPayload {
+	callResult: CallResult
+}
+
+type User {
+	isTruelyActive: Boolean!
+	firstName: String!
+	surname: String!
+	staffNumber: String!
+	email: String!
+	contactNumber: String!
+	departmentId: Long!
+	department: Department!
+	statusId: Long!
+	status: UserStatus!
+	roleId: Long!
+	role: Role!
+	active: Boolean!
+	username: String!
+	type: UserType!
+	activeDashboardId: Long
+	activeDashboard: Dashboard
+	countryIds: [Long!]!
+	defaultCountryId: Long
+	defaultCountry: EdifyCountry
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+type UserEvent {
+	evt: UserEventType!
+}
+
+type UserFeed {
+	userId: Long!
+	user: User!
+	activity: UserActivityType!
+	type: EventType!
+	title: String!
+	notes: String!
+	entityId: Long
+	entityType: String
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type UserFeedsCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [UserFeed!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+type UserStatus {
+	name: String!
+	notes: String!
+	isActive: Boolean!
+	createdBy: String!
+	createdOn: DateTime!
+	updatedBy: String!
+	updatedOn: DateTime
+	revision: Int!
+	id: Long!
+}
+
+"A segment of a collection."
+type UserStatusesCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [UserStatus!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+"A segment of a collection."
+type UsersCollectionSegment {
+	"Information to aid in pagination."
+	pageInfo: CollectionSegmentInfo!
+	"A flattened list of the items."
+	items: [User!]
+	totalCount: Int! @cost(weight: "10")
+}
+
+input ActivateArticleTemplateInput {
+	id: Long!
+}
+
+input ActivateDashboardInput {
+	id: Long!
+}
+
+input ActivateEmailTemplateInput {
+	id: Long!
+}
+
+input ActivateSmsTemplateInput {
+	id: Long!
+}
+
+input AlumniEventFilterInput {
+	and: [AlumniEventFilterInput!]
+	or: [AlumniEventFilterInput!]
+	typeId: LongOperationFilterInput
+	type: AlumniEventTypeFilterInput
+	name: StringOperationFilterInput
+	startDate: DateTimeOperationFilterInput
+	endDate: DateTimeOperationFilterInput
+	description: StringOperationFilterInput
+	location: StringOperationFilterInput
+	imageUrl: StringOperationFilterInput
+	article: StringOperationFilterInput
+	publish: BooleanOperationFilterInput
+	datePublished: DateTimeOperationFilterInput
+	permitSignup: BooleanOperationFilterInput
+	signupStarts: DateTimeOperationFilterInput
+	signupEnds: DateTimeOperationFilterInput
+	assessmentStarts: DateTimeOperationFilterInput
+	duration: StringOperationFilterInput
+	smsTemplateId: LongOperationFilterInput
+	smsTemplate: SmsTemplateFilterInput
+	countryId: LongOperationFilterInput
+	country: EdifyCountryFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input AlumniEventSortInput {
+	typeId: SortEnumType @cost(weight: "10")
+	type: AlumniEventTypeSortInput @cost(weight: "10")
+	name: SortEnumType @cost(weight: "10")
+	startDate: SortEnumType @cost(weight: "10")
+	endDate: SortEnumType @cost(weight: "10")
+	description: SortEnumType @cost(weight: "10")
+	location: SortEnumType @cost(weight: "10")
+	imageUrl: SortEnumType @cost(weight: "10")
+	article: SortEnumType @cost(weight: "10")
+	publish: SortEnumType @cost(weight: "10")
+	datePublished: SortEnumType @cost(weight: "10")
+	permitSignup: SortEnumType @cost(weight: "10")
+	signupStarts: SortEnumType @cost(weight: "10")
+	signupEnds: SortEnumType @cost(weight: "10")
+	assessmentStarts: SortEnumType @cost(weight: "10")
+	duration: SortEnumType @cost(weight: "10")
+	smsTemplateId: SortEnumType @cost(weight: "10")
+	smsTemplate: SmsTemplateSortInput @cost(weight: "10")
+	countryId: SortEnumType @cost(weight: "10")
+	country: EdifyCountrySortInput @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input AlumniEventTypeFilterInput {
+	and: [AlumniEventTypeFilterInput!]
+	or: [AlumniEventTypeFilterInput!]
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input AlumniEventTypeSortInput {
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input AlumniFilterInput {
+	and: [AlumniFilterInput!]
+	or: [AlumniFilterInput!]
+	firstName: StringOperationFilterInput
+	otherNames: StringOperationFilterInput
+	surname: StringOperationFilterInput
+	dateOfBirth: StringOperationFilterInput
+	profilePictureUrl: StringOperationFilterInput
+	phoneNumber1: StringOperationFilterInput
+	phoneNumber2: StringOperationFilterInput
+	whatsAppNumber: StringOperationFilterInput
+	email: StringOperationFilterInput
+	basicSchoolCompletedId: LongOperationFilterInput
+	basicSchoolCompleted: SchoolFilterInput
+	yearCompleted: IntOperationFilterInput
+	currentStatus: StringOperationFilterInput
+	gender: StringOperationFilterInput
+	otherStatus: StringOperationFilterInput
+	occupationId: LongOperationFilterInput
+	occupation: OccupationFilterInput
+	currentInstitution: StringOperationFilterInput
+	category: StringOperationFilterInput
+	otherCategory: StringOperationFilterInput
+	programOfStudy: StringOperationFilterInput
+	currentYear: StringOperationFilterInput
+	currentPlaceOfWork: StringOperationFilterInput
+	businessType: StringOperationFilterInput
+	businessDuration: StringOperationFilterInput
+	countryId: LongOperationFilterInput
+	country: CountryFilterInput
+	regionOfResidenceId: LongOperationFilterInput
+	regionOfResidence: RegionFilterInput
+	username: StringOperationFilterInput
+	password: StringOperationFilterInput
+	password2: StringOperationFilterInput
+	isProfileCompleted: BooleanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input AlumniSortInput {
+	firstName: SortEnumType @cost(weight: "10")
+	otherNames: SortEnumType @cost(weight: "10")
+	surname: SortEnumType @cost(weight: "10")
+	dateOfBirth: SortEnumType @cost(weight: "10")
+	profilePictureUrl: SortEnumType @cost(weight: "10")
+	phoneNumber1: SortEnumType @cost(weight: "10")
+	phoneNumber2: SortEnumType @cost(weight: "10")
+	whatsAppNumber: SortEnumType @cost(weight: "10")
+	email: SortEnumType @cost(weight: "10")
+	basicSchoolCompletedId: SortEnumType @cost(weight: "10")
+	basicSchoolCompleted: SchoolSortInput @cost(weight: "10")
+	yearCompleted: SortEnumType @cost(weight: "10")
+	currentStatus: SortEnumType @cost(weight: "10")
+	gender: SortEnumType @cost(weight: "10")
+	otherStatus: SortEnumType @cost(weight: "10")
+	occupationId: SortEnumType @cost(weight: "10")
+	occupation: OccupationSortInput @cost(weight: "10")
+	currentInstitution: SortEnumType @cost(weight: "10")
+	category: SortEnumType @cost(weight: "10")
+	otherCategory: SortEnumType @cost(weight: "10")
+	programOfStudy: SortEnumType @cost(weight: "10")
+	currentYear: SortEnumType @cost(weight: "10")
+	currentPlaceOfWork: SortEnumType @cost(weight: "10")
+	businessType: SortEnumType @cost(weight: "10")
+	businessDuration: SortEnumType @cost(weight: "10")
+	countryId: SortEnumType @cost(weight: "10")
+	country: CountrySortInput @cost(weight: "10")
+	regionOfResidenceId: SortEnumType @cost(weight: "10")
+	regionOfResidence: RegionSortInput @cost(weight: "10")
+	username: SortEnumType @cost(weight: "10")
+	password: SortEnumType @cost(weight: "10")
+	password2: SortEnumType @cost(weight: "10")
+	isProfileCompleted: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input ArticleTemplateFilterInput {
+	and: [ArticleTemplateFilterInput!]
+	or: [ArticleTemplateFilterInput!]
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	content: StringOperationFilterInput
+	category: StringOperationFilterInput
+	isSystemTemplate: BooleanOperationFilterInput
+	active: BooleanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input ArticleTemplateSortInput {
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	content: SortEnumType @cost(weight: "10")
+	category: SortEnumType @cost(weight: "10")
+	isSystemTemplate: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input BooleanOperationFilterInput {
+	eq: Boolean @cost(weight: "10")
+	neq: Boolean @cost(weight: "10")
+}
+
+input CampaignEventOperationFilterInput {
+	eq: CampaignEvent @cost(weight: "10")
+	neq: CampaignEvent @cost(weight: "10")
+	in: [CampaignEvent!] @cost(weight: "10")
+	nin: [CampaignEvent!] @cost(weight: "10")
+}
+
+input CampaignFrequencyOperationFilterInput {
+	eq: CampaignFrequency @cost(weight: "10")
+	neq: CampaignFrequency @cost(weight: "10")
+	in: [CampaignFrequency!] @cost(weight: "10")
+	nin: [CampaignFrequency!] @cost(weight: "10")
+}
+
+input ContactUsFilterInput {
+	and: [ContactUsFilterInput!]
+	or: [ContactUsFilterInput!]
+	name: StringOperationFilterInput
+	email: StringOperationFilterInput
+	subject: StringOperationFilterInput
+	message: StringOperationFilterInput
+	isRead: BooleanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input ContactUsSortInput {
+	name: SortEnumType @cost(weight: "10")
+	email: SortEnumType @cost(weight: "10")
+	subject: SortEnumType @cost(weight: "10")
+	message: SortEnumType @cost(weight: "10")
+	isRead: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input CountryFilterInput {
+	and: [CountryFilterInput!]
+	or: [CountryFilterInput!]
+	name: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input CountrySortInput {
+	name: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input CreateAlumniEventInput {
+	typeId: Long!
+	name: String!
+	startDate: DateTime!
+	endDate: DateTime!
+	description: String!
+	location: String
+	image: Upload
+	article: String
+	publish: Boolean!
+	permitSignup: Boolean!
+	signupStarts: DateTime
+	signupEnds: DateTime
+	assessmentStarts: DateTime
+	duration: String
+	smsTemplateId: Long
+	countryId: Long!
+}
+
+input CreateAlumniInput {
+	firstName: String!
+	otherNames: String!
+	surname: String!
+	phoneNumber1: String!
+	phoneNumber2: String!
+	whatsAppNumber: String!
+	email: String!
+	basicSchoolCompletedId: Long!
+	yearCompleted: Int!
+	occupationId: Long
+	currentInstitution: String!
+	currentPlaceOfWork: String
+	regionOfResidenceId: Long
+	countryId: Long
+	username: String
+	isProfileCompleted: Boolean
+}
+
+input CreateArticleTemplateInput {
+	name: String!
+	notes: String!
+	content: String!
+	category: String!
+	isSystemTemplate: Boolean!
+	active: Boolean!
+}
+
+input CreateContactUsInput {
+	name: String!
+	email: String!
+	message: String!
+}
+
+input CreateCountryInput {
+	name: String!
+}
+
+input CreateDashboardInput {
+	name: String!
+	description: String!
+	viewer: String!
+	definition: String!
+}
+
+input CreateDepartmentInput {
+	name: String!
+	notes: String!
+	edifyCountryId: Long!
+}
+
+input CreateDistrictInput {
+	name: String!
+	notes: String!
+	regionId: Long!
+}
+
+input CreateEdifyCountryInput {
+	countryId: Long!
+	name: String!
+	flag: Upload
+	flagUrl: String
+	notes: String!
+}
+
+input CreateEmailCampaignInput {
+	name: String!
+	subject: String!
+	message: String!
+	emails: [String!]!
+	schools: [Long!]!
+	occupations: [Long!]!
+	regionsOfResidence: [Long!]!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date
+	endDate: Date
+	time: TimeSpan
+	file: Upload
+}
+
+input CreateEmailTemplateInput {
+	name: String!
+	notes: String!
+	subject: String!
+	message: String!
+	category: String!
+	isSystemTemplate: Boolean!
+	active: Boolean!
+}
+
+input CreateEventRegistrationInput {
+	eventId: Long!
+	alumniId: Long!
+	status: String
+	files: String
+	registrationData: String
+	cv: Upload
+	dateRegistered: DateTime
+	duration: String
+}
+
+input CreateEventRegistrationNewInput {
+	eventId: Long!
+	alumniId: Long!
+	status: String
+	registrationData: String
+	files: [Upload!]
+	dateRegistered: DateTime
+	duration: String
+}
+
+input CreateEventTypeInput {
+	name: String!
+	notes: String!
+}
+
+input CreateFbCampaignInput {
+	name: String!
+	message: String!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date
+	endDate: Date
+	time: TimeSpan
+}
+
+input CreateLeaderInput {
+	memberId: Long
+	position: String!
+	email: String!
+	startDate: String
+	endDate: String
+	photo: Upload
+	photoUrl: String
+	article: String
+	notes: String
+}
+
+input CreateLeadershipRoleInput {
+	name: String!
+	notes: String
+}
+
+input CreateMemberInput {
+	name: String!
+	organization: String!
+	phoneNumber: String!
+	ghCardNumber: String
+	employeeDetails: String
+	email: String!
+	address: String!
+	operationalArea: String!
+	commencementYear: String!
+	redgNo: String!
+	category: String
+	additionalInformation: String
+	productMaterialCategory: String
+	description: String!
+	membershipDeclaration: String
+	registeredBy: String
+}
+
+input CreateNewsEntryInput {
+	label: String!
+	description: String!
+	imageUrl: String
+	imageFile: Upload
+}
+
+input CreateOccupationInput {
+	name: String!
+	notes: String!
+}
+
+input CreateRegionInput {
+	name: String!
+	notes: String!
+	countryId: Long!
+}
+
+input CreateReportInput {
+	name: String!
+	description: String!
+	folder: String!
+	reportFile: Upload!
+	filterFormDefinition: String!
+	renderer: ReportRendererType!
+}
+
+input CreateRoleInput {
+	name: String!
+	notes: String!
+	permissions: [String!]!
+	dashboards: [Long!]!
+	reports: [Long!]!
+	active: Boolean!
+}
+
+input CreateSchoolInput {
+	name: String!
+	logoUrl: String
+	logo: Upload
+	notes: String!
+	edifyCountryId: Long!
+	contactPerson: String!
+	contactPhoneNumber1: String!
+	contactPhoneNumber2: String!
+}
+
+input CreateSmsCampaignInput {
+	name: String!
+	message: String!
+	phoneNumbers: [String!]!
+	schools: [Long!]!
+	occupations: [Long!]!
+	regionsOfResidence: [Long!]!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date
+	endDate: Date
+	time: TimeSpan
+	file: Upload
+}
+
+input CreateSmsTemplateInput {
+	name: String!
+	notes: String!
+	message: String!
+	category: String!
+	isSystemTemplate: Boolean!
+	active: Boolean!
+}
+
+input CreateStoryInput {
+	title: String!
+	memberId: Long
+	author: String
+	email: String!
+	photo: Upload
+	photoUrl: String
+	currentStatus: String
+	active: Boolean!
+	article: String!
+}
+
+input CreateTwitterCampaignInput {
+	name: String!
+	message: String!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date
+	endDate: Date
+	time: TimeSpan
+}
+
+input CreateUserInput {
+	firstName: String!
+	lastName: String!
+	staffNumber: String!
+	email: String!
+	contactNumber: String
+	departmentId: Long!
+	statusId: Long!
+	roleId: Long!
+	active: Boolean!
+	username: String!
+	countryIds: [Long!]!
+	defaultCountryId: Long
+}
+
+input CreateUserStatusInput {
+	name: String!
+	notes: String!
+}
+
+input DashboardFilterInput {
+	and: [DashboardFilterInput!]
+	or: [DashboardFilterInput!]
+	name: StringOperationFilterInput
+	description: StringOperationFilterInput
+	viewer: StringOperationFilterInput
+	formDefinition: JsonDocumentFilterInput
+	active: BooleanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input DashboardSortInput {
+	name: SortEnumType @cost(weight: "10")
+	description: SortEnumType @cost(weight: "10")
+	viewer: SortEnumType @cost(weight: "10")
+	formDefinition: JsonDocumentSortInput @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input DateOperationFilterInput {
+	eq: Date @cost(weight: "10")
+	neq: Date @cost(weight: "10")
+	in: [Date] @cost(weight: "10")
+	nin: [Date] @cost(weight: "10")
+	gt: Date @cost(weight: "10")
+	ngt: Date @cost(weight: "10")
+	gte: Date @cost(weight: "10")
+	ngte: Date @cost(weight: "10")
+	lt: Date @cost(weight: "10")
+	nlt: Date @cost(weight: "10")
+	lte: Date @cost(weight: "10")
+	nlte: Date @cost(weight: "10")
+}
+
+input DateTimeOperationFilterInput {
+	eq: DateTime @cost(weight: "10")
+	neq: DateTime @cost(weight: "10")
+	in: [DateTime] @cost(weight: "10")
+	nin: [DateTime] @cost(weight: "10")
+	gt: DateTime @cost(weight: "10")
+	ngt: DateTime @cost(weight: "10")
+	gte: DateTime @cost(weight: "10")
+	ngte: DateTime @cost(weight: "10")
+	lt: DateTime @cost(weight: "10")
+	nlt: DateTime @cost(weight: "10")
+	lte: DateTime @cost(weight: "10")
+	nlte: DateTime @cost(weight: "10")
+}
+
+input DeactivateArticleTemplateInput {
+	id: Long!
+}
+
+input DeactivateDashboardInput {
+	id: Long!
+}
+
+input DeactivateEmailTemplateInput {
+	id: Long!
+}
+
+input DeactivateSmsTemplateInput {
+	id: Long!
+}
+
+input DeleteAlumniEventInput {
+	id: Long!
+}
+
+input DeleteArticleTemplateInput {
+	id: Long!
+}
+
+input DeleteContactUsInput {
+	id: Long!
+}
+
+input DeleteCountryInput {
+	id: Long!
+}
+
+input DeleteDashboardInput {
+	id: Long!
+}
+
+input DeleteDepartmentInput {
+	id: Long!
+}
+
+input DeleteDistrictInput {
+	id: Long!
+}
+
+input DeleteEdifyCountryInput {
+	id: Long!
+}
+
+input DeleteEmailCampaignInput {
+	id: Long!
+}
+
+input DeleteEmailTemplateInput {
+	id: Long!
+}
+
+input DeleteEventRegistrationInput {
+	id: Long!
+}
+
+input DeleteEventTypeInput {
+	id: Long!
+}
+
+input DeleteFbCampaignInput {
+	id: Long!
+}
+
+input DeleteLeaderInput {
+	id: Long!
+}
+
+input DeleteLeadershipRoleInput {
+	id: Long!
+}
+
+input DeleteMemberInput {
+	id: Long!
+}
+
+input DeleteNewsEntryInput {
+	id: Long!
+}
+
+input DeleteOccupationInput {
+	id: Long!
+}
+
+input DeleteRegionInput {
+	id: Long!
+}
+
+input DeleteReportInput {
+	id: Long!
+}
+
+input DeleteRoleInput {
+	id: Long!
+}
+
+input DeleteSchoolInput {
+	id: Long!
+}
+
+input DeleteSmsCampaignInput {
+	id: Long!
+}
+
+input DeleteSmsTemplateInput {
+	id: Long!
+}
+
+input DeleteStoryInput {
+	id: Long!
+}
+
+input DeleteTwitterCampaignInput {
+	id: Long!
+}
+
+input DeleteUserInput {
+	id: Long!
+}
+
+input DeleteUserStatusInput {
+	id: Long!
+}
+
+input DepartmentFilterInput {
+	and: [DepartmentFilterInput!]
+	or: [DepartmentFilterInput!]
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	edifyCountryId: LongOperationFilterInput
+	edifyCountry: EdifyCountryFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input DepartmentSortInput {
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	edifyCountryId: SortEnumType @cost(weight: "10")
+	edifyCountry: EdifyCountrySortInput @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input DistrictFilterInput {
+	and: [DistrictFilterInput!]
+	or: [DistrictFilterInput!]
+	regionId: LongOperationFilterInput
+	region: RegionFilterInput
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input DistrictSortInput {
+	regionId: SortEnumType @cost(weight: "10")
+	region: RegionSortInput @cost(weight: "10")
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input EdifyCountryFilterInput {
+	and: [EdifyCountryFilterInput!]
+	or: [EdifyCountryFilterInput!]
+	name: StringOperationFilterInput
+	flagUrl: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	countryId: LongOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input EdifyCountrySortInput {
+	name: SortEnumType @cost(weight: "10")
+	flagUrl: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	countryId: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input EmailCampaignFeedFilterInput {
+	and: [EmailCampaignFeedFilterInput!]
+	or: [EmailCampaignFeedFilterInput!]
+	campaignId: LongOperationFilterInput
+	campaign: EmailCampaignFilterInput
+	activity: CampaignEventOperationFilterInput
+	type: EventTypeOperationFilterInput
+	title: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input EmailCampaignFeedSortInput {
+	campaignId: SortEnumType @cost(weight: "10")
+	campaign: EmailCampaignSortInput @cost(weight: "10")
+	activity: SortEnumType @cost(weight: "10")
+	type: SortEnumType @cost(weight: "10")
+	title: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input EmailCampaignFilterInput {
+	and: [EmailCampaignFilterInput!]
+	or: [EmailCampaignFilterInput!]
+	name: StringOperationFilterInput
+	subject: StringOperationFilterInput
+	message: StringOperationFilterInput
+	emails: ListStringOperationFilterInput
+	schools: ListLongOperationFilterInput
+	occupations: ListLongOperationFilterInput
+	regionsOfResidence: ListLongOperationFilterInput
+	dataFileUrl: StringOperationFilterInput
+	active: BooleanOperationFilterInput
+	notes: StringOperationFilterInput
+	frequency: CampaignFrequencyOperationFilterInput
+	startDate: DateOperationFilterInput
+	endDate: DateOperationFilterInput
+	time: TimeSpanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input EmailCampaignRunFilterInput {
+	and: [EmailCampaignRunFilterInput!]
+	or: [EmailCampaignRunFilterInput!]
+	campaignId: LongOperationFilterInput
+	campaign: EmailCampaignFilterInput
+	numberOfEmails: IntOperationFilterInput
+	query: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input EmailCampaignRunSortInput {
+	campaignId: SortEnumType @cost(weight: "10")
+	campaign: EmailCampaignSortInput @cost(weight: "10")
+	numberOfEmails: SortEnumType @cost(weight: "10")
+	query: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input EmailCampaignSortInput {
+	name: SortEnumType @cost(weight: "10")
+	subject: SortEnumType @cost(weight: "10")
+	message: SortEnumType @cost(weight: "10")
+	dataFileUrl: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	frequency: SortEnumType @cost(weight: "10")
+	startDate: SortEnumType @cost(weight: "10")
+	endDate: SortEnumType @cost(weight: "10")
+	time: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input EmailTemplateFilterInput {
+	and: [EmailTemplateFilterInput!]
+	or: [EmailTemplateFilterInput!]
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	subject: StringOperationFilterInput
+	message: StringOperationFilterInput
+	category: StringOperationFilterInput
+	isSystemTemplate: BooleanOperationFilterInput
+	active: BooleanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input EmailTemplateSortInput {
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	subject: SortEnumType @cost(weight: "10")
+	message: SortEnumType @cost(weight: "10")
+	category: SortEnumType @cost(weight: "10")
+	isSystemTemplate: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input EventRegistrationFilterInput {
+	and: [EventRegistrationFilterInput!]
+	or: [EventRegistrationFilterInput!]
+	eventId: LongOperationFilterInput
+	alumniId: LongOperationFilterInput
+	status: StringOperationFilterInput
+	duration: StringOperationFilterInput
+	cvUrl: StringOperationFilterInput
+	files: StringOperationFilterInput
+	registrationData: StringOperationFilterInput
+	assessmentData: StringOperationFilterInput
+	reviewData: StringOperationFilterInput
+	dateRegistered: DateTimeOperationFilterInput
+	attended: BooleanOperationFilterInput
+	eventEntry: AlumniEventFilterInput
+	alumni: AlumniFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input EventRegistrationSortInput {
+	eventId: SortEnumType @cost(weight: "10")
+	alumniId: SortEnumType @cost(weight: "10")
+	status: SortEnumType @cost(weight: "10")
+	duration: SortEnumType @cost(weight: "10")
+	cvUrl: SortEnumType @cost(weight: "10")
+	files: SortEnumType @cost(weight: "10")
+	registrationData: SortEnumType @cost(weight: "10")
+	assessmentData: SortEnumType @cost(weight: "10")
+	reviewData: SortEnumType @cost(weight: "10")
+	dateRegistered: SortEnumType @cost(weight: "10")
+	attended: SortEnumType @cost(weight: "10")
+	eventEntry: AlumniEventSortInput @cost(weight: "10")
+	alumni: AlumniSortInput @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input EventTypeOperationFilterInput {
+	eq: EventType @cost(weight: "10")
+	neq: EventType @cost(weight: "10")
+	in: [EventType!] @cost(weight: "10")
+	nin: [EventType!] @cost(weight: "10")
+}
+
+input FbCampaignFeedFilterInput {
+	and: [FbCampaignFeedFilterInput!]
+	or: [FbCampaignFeedFilterInput!]
+	campaignId: LongOperationFilterInput
+	campaign: FbCampaignFilterInput
+	activity: CampaignEventOperationFilterInput
+	type: EventTypeOperationFilterInput
+	title: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input FbCampaignFeedSortInput {
+	campaignId: SortEnumType @cost(weight: "10")
+	campaign: FbCampaignSortInput @cost(weight: "10")
+	activity: SortEnumType @cost(weight: "10")
+	type: SortEnumType @cost(weight: "10")
+	title: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input FbCampaignFilterInput {
+	and: [FbCampaignFilterInput!]
+	or: [FbCampaignFilterInput!]
+	name: StringOperationFilterInput
+	message: StringOperationFilterInput
+	active: BooleanOperationFilterInput
+	notes: StringOperationFilterInput
+	frequency: CampaignFrequencyOperationFilterInput
+	startDate: DateOperationFilterInput
+	endDate: DateOperationFilterInput
+	time: TimeSpanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input FbCampaignRunFilterInput {
+	and: [FbCampaignRunFilterInput!]
+	or: [FbCampaignRunFilterInput!]
+	campaignId: LongOperationFilterInput
+	campaign: FbCampaignFilterInput
+	numberOfViews: IntOperationFilterInput
+	query: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input FbCampaignRunSortInput {
+	campaignId: SortEnumType @cost(weight: "10")
+	campaign: FbCampaignSortInput @cost(weight: "10")
+	numberOfViews: SortEnumType @cost(weight: "10")
+	query: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input FbCampaignSortInput {
+	name: SortEnumType @cost(weight: "10")
+	message: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	frequency: SortEnumType @cost(weight: "10")
+	startDate: SortEnumType @cost(weight: "10")
+	endDate: SortEnumType @cost(weight: "10")
+	time: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input GenerateReportInput {
+	reportId: Long!
+	userId: Long
+	filter: JSON
+	outputFormat: OutputFormat!
+	runInBackground: Boolean!
+}
+
+input GetReportParametersFromFileInput {
+	reportFile: Upload!
+}
+
+input GetReportParametersInput {
+	definition: String!
+}
+
+input IntOperationFilterInput {
+	eq: Int @cost(weight: "10")
+	neq: Int @cost(weight: "10")
+	in: [Int] @cost(weight: "10")
+	nin: [Int] @cost(weight: "10")
+	gt: Int @cost(weight: "10")
+	ngt: Int @cost(weight: "10")
+	gte: Int @cost(weight: "10")
+	ngte: Int @cost(weight: "10")
+	lt: Int @cost(weight: "10")
+	nlt: Int @cost(weight: "10")
+	lte: Int @cost(weight: "10")
+	nlte: Int @cost(weight: "10")
+}
+
+input JsonDocumentFilterInput {
+	and: [JsonDocumentFilterInput!]
+	or: [JsonDocumentFilterInput!]
+	rootElement: JsonElementFilterInput
+}
+
+input JsonDocumentSortInput {
+	rootElement: SortEnumType @cost(weight: "10")
+}
+
+input JsonElementFilterInput {
+	and: [JsonElementFilterInput!]
+	or: [JsonElementFilterInput!]
+	valueKind: JsonValueKindOperationFilterInput
+}
+
+input JsonValueKindOperationFilterInput {
+	eq: JsonValueKind @cost(weight: "10")
+	neq: JsonValueKind @cost(weight: "10")
+	in: [JsonValueKind!] @cost(weight: "10")
+	nin: [JsonValueKind!] @cost(weight: "10")
+}
+
+input LeaderFilterInput {
+	and: [LeaderFilterInput!]
+	or: [LeaderFilterInput!]
+	memberId: LongOperationFilterInput
+	member: AlumniFilterInput
+	position: StringOperationFilterInput
+	photoUrl: StringOperationFilterInput
+	startDate: StringOperationFilterInput
+	endDate: StringOperationFilterInput
+	article: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input LeaderSortInput {
+	memberId: SortEnumType @cost(weight: "10")
+	member: AlumniSortInput @cost(weight: "10")
+	position: SortEnumType @cost(weight: "10")
+	photoUrl: SortEnumType @cost(weight: "10")
+	startDate: SortEnumType @cost(weight: "10")
+	endDate: SortEnumType @cost(weight: "10")
+	article: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input LeadershipRoleFilterInput {
+	and: [LeadershipRoleFilterInput!]
+	or: [LeadershipRoleFilterInput!]
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input LeadershipRoleSortInput {
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input ListLongOperationFilterInput {
+	all: LongOperationFilterInput @cost(weight: "10")
+	none: LongOperationFilterInput @cost(weight: "10")
+	some: LongOperationFilterInput @cost(weight: "10")
+	any: Boolean @cost(weight: "10")
+}
+
+input ListStringOperationFilterInput {
+	all: StringOperationFilterInput @cost(weight: "10")
+	none: StringOperationFilterInput @cost(weight: "10")
+	some: StringOperationFilterInput @cost(weight: "10")
+	any: Boolean @cost(weight: "10")
+}
+
+input LockUserInput {
+	id: Long!
+}
+
+input LongOperationFilterInput {
+	eq: Long @cost(weight: "10")
+	neq: Long @cost(weight: "10")
+	in: [Long] @cost(weight: "10")
+	nin: [Long] @cost(weight: "10")
+	gt: Long @cost(weight: "10")
+	ngt: Long @cost(weight: "10")
+	gte: Long @cost(weight: "10")
+	ngte: Long @cost(weight: "10")
+	lt: Long @cost(weight: "10")
+	nlt: Long @cost(weight: "10")
+	lte: Long @cost(weight: "10")
+	nlte: Long @cost(weight: "10")
+}
+
+input MarkEmailAsReadInput {
+	id: Long!
+}
+
+input MarkEmailAsUnreadInput {
+	id: Long!
+}
+
+input MarkNotificationsAsReadInput {
+	entryId: Long!
+}
+
+input MemberFilterInput {
+	and: [MemberFilterInput!]
+	or: [MemberFilterInput!]
+	name: StringOperationFilterInput
+	username: StringOperationFilterInput
+	password: StringOperationFilterInput
+	password2: StringOperationFilterInput
+	organization: StringOperationFilterInput
+	phoneNumber: StringOperationFilterInput
+	ghanaCardNumber: StringOperationFilterInput
+	email: StringOperationFilterInput
+	address: StringOperationFilterInput
+	employeeDetails: StringOperationFilterInput
+	operationalArea: StringOperationFilterInput
+	commencementYear: StringOperationFilterInput
+	redgNo: StringOperationFilterInput
+	category: StringOperationFilterInput
+	additionalInformation: StringOperationFilterInput
+	productMaterialCategory: StringOperationFilterInput
+	description: StringOperationFilterInput
+	membershipDeclaration: StringOperationFilterInput
+	registeredBy: StringOperationFilterInput
+	status: MembershipStatusOperationFilterInput
+	reason: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input MemberSortInput {
+	name: SortEnumType @cost(weight: "10")
+	username: SortEnumType @cost(weight: "10")
+	password: SortEnumType @cost(weight: "10")
+	password2: SortEnumType @cost(weight: "10")
+	organization: SortEnumType @cost(weight: "10")
+	phoneNumber: SortEnumType @cost(weight: "10")
+	ghanaCardNumber: SortEnumType @cost(weight: "10")
+	email: SortEnumType @cost(weight: "10")
+	address: SortEnumType @cost(weight: "10")
+	employeeDetails: SortEnumType @cost(weight: "10")
+	operationalArea: SortEnumType @cost(weight: "10")
+	commencementYear: SortEnumType @cost(weight: "10")
+	redgNo: SortEnumType @cost(weight: "10")
+	category: SortEnumType @cost(weight: "10")
+	additionalInformation: SortEnumType @cost(weight: "10")
+	productMaterialCategory: SortEnumType @cost(weight: "10")
+	description: SortEnumType @cost(weight: "10")
+	membershipDeclaration: SortEnumType @cost(weight: "10")
+	registeredBy: SortEnumType @cost(weight: "10")
+	status: SortEnumType @cost(weight: "10")
+	reason: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input MembershipStatusOperationFilterInput {
+	eq: MembershipStatus @cost(weight: "10")
+	neq: MembershipStatus @cost(weight: "10")
+	in: [MembershipStatus!] @cost(weight: "10")
+	nin: [MembershipStatus!] @cost(weight: "10")
+}
+
+input NewsEntryFilterInput {
+	and: [NewsEntryFilterInput!]
+	or: [NewsEntryFilterInput!]
+	label: StringOperationFilterInput
+	description: StringOperationFilterInput
+	image: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input NewsEntrySortInput {
+	label: SortEnumType @cost(weight: "10")
+	description: SortEnumType @cost(weight: "10")
+	image: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input NotificationEntityOperationFilterInput {
+	eq: NotificationEntity @cost(weight: "10")
+	neq: NotificationEntity @cost(weight: "10")
+	in: [NotificationEntity!] @cost(weight: "10")
+	nin: [NotificationEntity!] @cost(weight: "10")
+}
+
+input NotificationEntryFilterInput {
+	and: [NotificationEntryFilterInput!]
+	or: [NotificationEntryFilterInput!]
+	userId: LongOperationFilterInput
+	user: UserFilterInput
+	entity: NotificationEntityOperationFilterInput
+	entityId: LongOperationFilterInput
+	title: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	date: DateTimeOperationFilterInput
+	dateRead: DateTimeOperationFilterInput
+	isRead: BooleanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input NotificationEntrySortInput {
+	userId: SortEnumType @cost(weight: "10")
+	user: UserSortInput @cost(weight: "10")
+	entity: SortEnumType @cost(weight: "10")
+	entityId: SortEnumType @cost(weight: "10")
+	title: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	date: SortEnumType @cost(weight: "10")
+	dateRead: SortEnumType @cost(weight: "10")
+	isRead: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input OccupationFilterInput {
+	and: [OccupationFilterInput!]
+	or: [OccupationFilterInput!]
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input OccupationSortInput {
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input QueueNewEventRegistrationSmsInput {
+	registrationId: Long!
+}
+
+input QueueNewSignupSmsInput {
+	alumniId: Long!
+}
+
+input QueueTestSmsInput {
+	edifyCountryId: Long!
+	phoneNumber: String!
+	template: String!
+	data: Any
+}
+
+input ReadReportsInput {
+	isActive: Boolean
+}
+
+input RegionFilterInput {
+	and: [RegionFilterInput!]
+	or: [RegionFilterInput!]
+	countryId: LongOperationFilterInput
+	country: CountryFilterInput
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input RegionSortInput {
+	countryId: SortEnumType @cost(weight: "10")
+	country: CountrySortInput @cost(weight: "10")
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input ReportDefinitionFilterInput {
+	and: [ReportDefinitionFilterInput!]
+	or: [ReportDefinitionFilterInput!]
+	name: StringOperationFilterInput
+	description: StringOperationFilterInput
+	reportDefinition: StringOperationFilterInput
+	formDefinition: StringOperationFilterInput
+	parameters: StringOperationFilterInput
+	active: BooleanOperationFilterInput
+	category: StringOperationFilterInput
+	renderer: ReportRendererTypeOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input ReportDefinitionSortInput {
+	name: SortEnumType @cost(weight: "10")
+	description: SortEnumType @cost(weight: "10")
+	reportDefinition: SortEnumType @cost(weight: "10")
+	formDefinition: SortEnumType @cost(weight: "10")
+	parameters: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	category: SortEnumType @cost(weight: "10")
+	renderer: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input ReportRendererTypeOperationFilterInput {
+	eq: ReportRendererType @cost(weight: "10")
+	neq: ReportRendererType @cost(weight: "10")
+	in: [ReportRendererType!] @cost(weight: "10")
+	nin: [ReportRendererType!] @cost(weight: "10")
+}
+
+input RestartServiceInput {
+	serviceName: String!
+}
+
+input ResumeEmailCampaignInput {
+	id: Long!
+}
+
+input ResumeFbCampaignInput {
+	id: Long!
+}
+
+input ResumeSmsCampaignInput {
+	id: Long!
+}
+
+input ResumeTwitterCampaignInput {
+	id: Long!
+}
+
+input RoleFilterInput {
+	and: [RoleFilterInput!]
+	or: [RoleFilterInput!]
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	permissions: ListStringOperationFilterInput
+	dashboards: ListLongOperationFilterInput
+	reports: ListLongOperationFilterInput
+	edifyCountries: ListLongOperationFilterInput
+	active: BooleanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input RoleSortInput {
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input SaveReportInput {
+	name: String!
+	description: String!
+	folder: String!
+	reportFile: Upload
+	filterFormDefinition: String!
+	renderer: ReportRendererType!
+	id: Long
+}
+
+input SchoolFilterInput {
+	and: [SchoolFilterInput!]
+	or: [SchoolFilterInput!]
+	edifyCountryId: LongOperationFilterInput
+	edifyCountry: EdifyCountryFilterInput
+	name: StringOperationFilterInput
+	logoUrl: StringOperationFilterInput
+	districtId: LongOperationFilterInput
+	district: DistrictFilterInput
+	contactPerson: StringOperationFilterInput
+	contactPhoneNumber1: StringOperationFilterInput
+	contactPhoneNumber2: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input SchoolSortInput {
+	edifyCountryId: SortEnumType @cost(weight: "10")
+	edifyCountry: EdifyCountrySortInput @cost(weight: "10")
+	name: SortEnumType @cost(weight: "10")
+	logoUrl: SortEnumType @cost(weight: "10")
+	districtId: SortEnumType @cost(weight: "10")
+	district: DistrictSortInput @cost(weight: "10")
+	contactPerson: SortEnumType @cost(weight: "10")
+	contactPhoneNumber1: SortEnumType @cost(weight: "10")
+	contactPhoneNumber2: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input ServiceEventOperationFilterInput {
+	eq: ServiceEvent @cost(weight: "10")
+	neq: ServiceEvent @cost(weight: "10")
+	in: [ServiceEvent!] @cost(weight: "10")
+	nin: [ServiceEvent!] @cost(weight: "10")
+}
+
+input ServiceFeedFilterInput {
+	and: [ServiceFeedFilterInput!]
+	or: [ServiceFeedFilterInput!]
+	service: StringOperationFilterInput
+	activity: ServiceEventOperationFilterInput
+	type: EventTypeOperationFilterInput
+	title: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input ServiceFeedSortInput {
+	service: SortEnumType @cost(weight: "10")
+	activity: SortEnumType @cost(weight: "10")
+	type: SortEnumType @cost(weight: "10")
+	title: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input SetActiveDashboardInput {
+	dashboardId: Long!
+}
+
+input SetActiveEdifyCountryInput {
+	countryId: Long
+}
+
+input SmsCampaignFeedFilterInput {
+	and: [SmsCampaignFeedFilterInput!]
+	or: [SmsCampaignFeedFilterInput!]
+	campaignId: LongOperationFilterInput
+	campaign: SmsCampaignFilterInput
+	activity: CampaignEventOperationFilterInput
+	type: EventTypeOperationFilterInput
+	title: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input SmsCampaignFeedSortInput {
+	campaignId: SortEnumType @cost(weight: "10")
+	campaign: SmsCampaignSortInput @cost(weight: "10")
+	activity: SortEnumType @cost(weight: "10")
+	type: SortEnumType @cost(weight: "10")
+	title: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input SmsCampaignFilterInput {
+	and: [SmsCampaignFilterInput!]
+	or: [SmsCampaignFilterInput!]
+	name: StringOperationFilterInput
+	message: StringOperationFilterInput
+	phoneNumbers: ListStringOperationFilterInput
+	schools: ListLongOperationFilterInput
+	occupations: ListLongOperationFilterInput
+	regionsOfResidence: ListLongOperationFilterInput
+	dataFileUrl: StringOperationFilterInput
+	active: BooleanOperationFilterInput
+	notes: StringOperationFilterInput
+	frequency: CampaignFrequencyOperationFilterInput
+	startDate: DateOperationFilterInput
+	endDate: DateOperationFilterInput
+	time: TimeSpanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input SmsCampaignRunFilterInput {
+	and: [SmsCampaignRunFilterInput!]
+	or: [SmsCampaignRunFilterInput!]
+	campaignId: LongOperationFilterInput
+	campaign: SmsCampaignFilterInput
+	numberOfSmses: IntOperationFilterInput
+	query: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input SmsCampaignRunSortInput {
+	campaignId: SortEnumType @cost(weight: "10")
+	campaign: SmsCampaignSortInput @cost(weight: "10")
+	numberOfSmses: SortEnumType @cost(weight: "10")
+	query: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input SmsCampaignSortInput {
+	name: SortEnumType @cost(weight: "10")
+	message: SortEnumType @cost(weight: "10")
+	dataFileUrl: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	frequency: SortEnumType @cost(weight: "10")
+	startDate: SortEnumType @cost(weight: "10")
+	endDate: SortEnumType @cost(weight: "10")
+	time: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input SmsTemplateFilterInput {
+	and: [SmsTemplateFilterInput!]
+	or: [SmsTemplateFilterInput!]
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	message: StringOperationFilterInput
+	category: StringOperationFilterInput
+	isSystemTemplate: BooleanOperationFilterInput
+	active: BooleanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input SmsTemplateSortInput {
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	message: SortEnumType @cost(weight: "10")
+	category: SortEnumType @cost(weight: "10")
+	isSystemTemplate: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input StoryFilterInput {
+	and: [StoryFilterInput!]
+	or: [StoryFilterInput!]
+	title: StringOperationFilterInput
+	memberId: LongOperationFilterInput
+	member: AlumniFilterInput
+	email: StringOperationFilterInput
+	author: StringOperationFilterInput
+	photoUrl: StringOperationFilterInput
+	currentStatus: StringOperationFilterInput
+	active: BooleanOperationFilterInput
+	article: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input StorySortInput {
+	title: SortEnumType @cost(weight: "10")
+	memberId: SortEnumType @cost(weight: "10")
+	member: AlumniSortInput @cost(weight: "10")
+	email: SortEnumType @cost(weight: "10")
+	author: SortEnumType @cost(weight: "10")
+	photoUrl: SortEnumType @cost(weight: "10")
+	currentStatus: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	article: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input StringOperationFilterInput {
+	and: [StringOperationFilterInput!]
+	or: [StringOperationFilterInput!]
+	eq: String @cost(weight: "10")
+	neq: String @cost(weight: "10")
+	contains: String @cost(weight: "20")
+	ncontains: String @cost(weight: "20")
+	in: [String] @cost(weight: "10")
+	nin: [String] @cost(weight: "10")
+	startsWith: String @cost(weight: "20")
+	nstartsWith: String @cost(weight: "20")
+	endsWith: String @cost(weight: "20")
+	nendsWith: String @cost(weight: "20")
+}
+
+input SuspendEmailCampaignInput {
+	id: Long!
+}
+
+input SuspendFbCampaignInput {
+	id: Long!
+}
+
+input SuspendSmsCampaignInput {
+	id: Long!
+}
+
+input SuspendTwitterCampaignInput {
+	id: Long!
+}
+
+input TimeSpanOperationFilterInput {
+	eq: TimeSpan @cost(weight: "10")
+	neq: TimeSpan @cost(weight: "10")
+	in: [TimeSpan] @cost(weight: "10")
+	nin: [TimeSpan] @cost(weight: "10")
+	gt: TimeSpan @cost(weight: "10")
+	ngt: TimeSpan @cost(weight: "10")
+	gte: TimeSpan @cost(weight: "10")
+	ngte: TimeSpan @cost(weight: "10")
+	lt: TimeSpan @cost(weight: "10")
+	nlt: TimeSpan @cost(weight: "10")
+	lte: TimeSpan @cost(weight: "10")
+	nlte: TimeSpan @cost(weight: "10")
+}
+
+input TwitterCampaignFeedFilterInput {
+	and: [TwitterCampaignFeedFilterInput!]
+	or: [TwitterCampaignFeedFilterInput!]
+	campaignId: LongOperationFilterInput
+	campaign: TwitterCampaignFilterInput
+	activity: CampaignEventOperationFilterInput
+	type: EventTypeOperationFilterInput
+	title: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input TwitterCampaignFeedSortInput {
+	campaignId: SortEnumType @cost(weight: "10")
+	campaign: TwitterCampaignSortInput @cost(weight: "10")
+	activity: SortEnumType @cost(weight: "10")
+	type: SortEnumType @cost(weight: "10")
+	title: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input TwitterCampaignFilterInput {
+	and: [TwitterCampaignFilterInput!]
+	or: [TwitterCampaignFilterInput!]
+	name: StringOperationFilterInput
+	message: StringOperationFilterInput
+	active: BooleanOperationFilterInput
+	notes: StringOperationFilterInput
+	frequency: CampaignFrequencyOperationFilterInput
+	startDate: DateOperationFilterInput
+	endDate: DateOperationFilterInput
+	time: TimeSpanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input TwitterCampaignRunFilterInput {
+	and: [TwitterCampaignRunFilterInput!]
+	or: [TwitterCampaignRunFilterInput!]
+	campaignId: LongOperationFilterInput
+	campaign: TwitterCampaignFilterInput
+	numberOfViews: IntOperationFilterInput
+	query: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input TwitterCampaignRunSortInput {
+	campaignId: SortEnumType @cost(weight: "10")
+	campaign: TwitterCampaignSortInput @cost(weight: "10")
+	numberOfViews: SortEnumType @cost(weight: "10")
+	query: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input TwitterCampaignSortInput {
+	name: SortEnumType @cost(weight: "10")
+	message: SortEnumType @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	frequency: SortEnumType @cost(weight: "10")
+	startDate: SortEnumType @cost(weight: "10")
+	endDate: SortEnumType @cost(weight: "10")
+	time: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input UnlockUserInput {
+	id: Long!
+}
+
+input UpdateAlumniEventDateInput {
+	eventId: Long!
+	startDate: DateTime!
+	endDate: DateTime!
+}
+
+input UpdateAlumniEventInput {
+	id: Long!
+	imageUrl: String
+	typeId: Long!
+	name: String!
+	startDate: DateTime!
+	endDate: DateTime!
+	description: String!
+	location: String
+	image: Upload
+	article: String
+	publish: Boolean!
+	permitSignup: Boolean!
+	signupStarts: DateTime
+	signupEnds: DateTime
+	assessmentStarts: DateTime
+	duration: String
+	smsTemplateId: Long
+	countryId: Long!
+}
+
+input UpdateArticleTemplateInput {
+	id: Long!
+	name: String!
+	notes: String!
+	content: String!
+	category: String!
+	isSystemTemplate: Boolean!
+	active: Boolean!
+}
+
+input UpdateContactUsInput {
+	id: Long!
+	name: String!
+	email: String!
+	message: String!
+}
+
+input UpdateCountryInput {
+	id: Long!
+	name: String!
+}
+
+input UpdateDashboardInput {
+	id: Long!
+	name: String!
+	description: String!
+	viewer: String!
+	definition: String
+}
+
+input UpdateDepartmentInput {
+	id: Long!
+	name: String!
+	notes: String!
+	edifyCountryId: Long!
+}
+
+input UpdateDistrictInput {
+	id: Long!
+	name: String!
+	notes: String!
+	regionId: Long!
+}
+
+input UpdateEdifyCountryInput {
+	id: Long!
+	countryId: Long!
+	name: String!
+	flag: Upload
+	flagUrl: String
+	notes: String!
+}
+
+input UpdateEmailCampaignInput {
+	id: Long!
+	name: String!
+	subject: String!
+	message: String!
+	emails: [String!]!
+	schools: [Long!]!
+	occupations: [Long!]!
+	regionsOfResidence: [Long!]!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date
+	endDate: Date
+	time: TimeSpan
+}
+
+input UpdateEmailTemplateInput {
+	id: Long!
+	name: String!
+	notes: String!
+	subject: String!
+	message: String!
+	category: String!
+	isSystemTemplate: Boolean!
+	active: Boolean!
+}
+
+input UpdateEventRegistrationInput {
+	id: Long!
+	eventId: Long!
+	alumniId: Long!
+	status: String
+	registrationData: String
+	cv: Upload
+	dateRegistered: DateTime
+	duration: String
+}
+
+input UpdateEventTypeInput {
+	id: Long!
+	name: String!
+	notes: String!
+}
+
+input UpdateFbCampaignInput {
+	id: Long!
+	name: String!
+	message: String!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date
+	endDate: Date
+	time: TimeSpan
+}
+
+input UpdateLeaderInput {
+	id: Long!
+	memberId: Long
+	position: String
+	email: String!
+	startDate: String
+	endDate: String
+	photo: Upload
+	photoUrl: String!
+	article: String
+	notes: String
+}
+
+input UpdateLeadershipRoleInput {
+	id: Long!
+	name: String
+	notes: String
+}
+
+input UpdateMemberInput {
+	id: Long!
+	name: String!
+	organization: String!
+	phoneNumber: String!
+	ghCardNumber: String
+	employeeDetails: String
+	email: String!
+	address: String!
+	operationalArea: String!
+	commencementYear: String!
+	redgNo: String!
+	category: String
+	additionalInformation: String
+	productMaterialCategory: String
+	description: String!
+	membershipDeclaration: String
+	registeredBy: String
+	status: MembershipStatus!
+	reason: String
+}
+
+input UpdateNewsEntryInput {
+	id: Long!
+	label: String!
+	description: String!
+	imageUrl: String
+	imageFile: Upload
+}
+
+input UpdateOccupationInput {
+	id: Long!
+	name: String!
+	notes: String!
+}
+
+input UpdateRegionInput {
+	id: Long!
+	name: String!
+	notes: String!
+	countryId: Long!
+}
+
+input UpdateReportInput {
+	name: String!
+	description: String!
+	folder: String!
+	reportFile: Upload
+	filterFormDefinition: String!
+	renderer: ReportRendererType!
+	id: Long!
+}
+
+input UpdateRoleInput {
+	id: Long!
+	name: String!
+	notes: String!
+	permissions: [String!]!
+	dashboards: [Long!]!
+	reports: [Long!]!
+	active: Boolean!
+}
+
+input UpdateSchoolInput {
+	id: Long!
+	name: String!
+	logoUrl: String
+	logo: Upload
+	notes: String!
+	edifyCountryId: Long!
+	contactPerson: String!
+	contactPhoneNumber1: String!
+	contactPhoneNumber2: String!
+}
+
+input UpdateSmsCampaignInput {
+	id: Long!
+	name: String!
+	message: String!
+	phoneNumbers: [String!]!
+	schools: [Long!]!
+	occupations: [Long!]!
+	regionsOfResidence: [Long!]!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date
+	endDate: Date
+	time: TimeSpan
+}
+
+input UpdateSmsTemplateInput {
+	id: Long!
+	name: String!
+	notes: String!
+	message: String!
+	category: String!
+	isSystemTemplate: Boolean!
+	active: Boolean!
+}
+
+input UpdateStoryInput {
+	id: Long!
+	title: String
+	memberId: Long
+	author: String
+	email: String!
+	photo: Upload
+	currentStatus: String
+	photoUrl: String
+	active: Boolean
+	article: String
+}
+
+input UpdateTwitterCampaignInput {
+	id: Long!
+	name: String!
+	message: String!
+	notes: String!
+	frequency: CampaignFrequency!
+	startDate: Date
+	endDate: Date
+	time: TimeSpan
+}
+
+input UpdateUserInput {
+	id: Long!
+	firstName: String!
+	lastName: String!
+	staffNumber: String!
+	email: String!
+	contactNumber: String
+	departmentId: Long!
+	statusId: Long!
+	roleId: Long!
+	active: Boolean!
+	username: String!
+	countryIds: [Long!]!
+	defaultCountryId: Long
+}
+
+input UpdateUserStatusInput {
+	id: Long!
+	name: String!
+	notes: String!
+}
+
+input UploadAlumniInput {
+	file: Upload!
+	edifyCountryId: Long!
+}
+
+input UploadEventAttendeesInput {
+	file: Upload!
+	eventId: Long!
+}
+
+input UploadEventAttendeesNewInput {
+	file: Upload!
+	eventId: Long!
+}
+
+input UploadSchoolsInput {
+	file: Upload!
+	edifyCountryId: Long!
+}
+
+input UserActivityTypeOperationFilterInput {
+	eq: UserActivityType @cost(weight: "10")
+	neq: UserActivityType @cost(weight: "10")
+	in: [UserActivityType!] @cost(weight: "10")
+	nin: [UserActivityType!] @cost(weight: "10")
+}
+
+input UserFeedFilterInput {
+	and: [UserFeedFilterInput!]
+	or: [UserFeedFilterInput!]
+	userId: LongOperationFilterInput
+	user: UserFilterInput
+	activity: UserActivityTypeOperationFilterInput
+	type: EventTypeOperationFilterInput
+	title: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	entityId: LongOperationFilterInput
+	entityType: StringOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input UserFeedSortInput {
+	userId: SortEnumType @cost(weight: "10")
+	user: UserSortInput @cost(weight: "10")
+	activity: SortEnumType @cost(weight: "10")
+	type: SortEnumType @cost(weight: "10")
+	title: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	entityId: SortEnumType @cost(weight: "10")
+	entityType: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input UserFilterInput {
+	and: [UserFilterInput!]
+	or: [UserFilterInput!]
+	firstName: StringOperationFilterInput
+	surname: StringOperationFilterInput
+	staffNumber: StringOperationFilterInput
+	email: StringOperationFilterInput
+	contactNumber: StringOperationFilterInput
+	departmentId: LongOperationFilterInput
+	department: DepartmentFilterInput
+	statusId: LongOperationFilterInput
+	status: UserStatusFilterInput
+	roleId: LongOperationFilterInput
+	role: RoleFilterInput
+	active: BooleanOperationFilterInput
+	username: StringOperationFilterInput
+	type: UserTypeOperationFilterInput
+	activeDashboardId: LongOperationFilterInput
+	activeDashboard: DashboardFilterInput
+	countryIds: ListLongOperationFilterInput
+	defaultCountryId: LongOperationFilterInput
+	defaultCountry: EdifyCountryFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input UserSortInput {
+	firstName: SortEnumType @cost(weight: "10")
+	surname: SortEnumType @cost(weight: "10")
+	staffNumber: SortEnumType @cost(weight: "10")
+	email: SortEnumType @cost(weight: "10")
+	contactNumber: SortEnumType @cost(weight: "10")
+	departmentId: SortEnumType @cost(weight: "10")
+	department: DepartmentSortInput @cost(weight: "10")
+	statusId: SortEnumType @cost(weight: "10")
+	status: UserStatusSortInput @cost(weight: "10")
+	roleId: SortEnumType @cost(weight: "10")
+	role: RoleSortInput @cost(weight: "10")
+	active: SortEnumType @cost(weight: "10")
+	username: SortEnumType @cost(weight: "10")
+	type: SortEnumType @cost(weight: "10")
+	activeDashboardId: SortEnumType @cost(weight: "10")
+	activeDashboard: DashboardSortInput @cost(weight: "10")
+	defaultCountryId: SortEnumType @cost(weight: "10")
+	defaultCountry: EdifyCountrySortInput @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input UserStatusFilterInput {
+	and: [UserStatusFilterInput!]
+	or: [UserStatusFilterInput!]
+	name: StringOperationFilterInput
+	notes: StringOperationFilterInput
+	isActive: BooleanOperationFilterInput
+	createdBy: StringOperationFilterInput
+	createdOn: DateTimeOperationFilterInput
+	updatedBy: StringOperationFilterInput
+	updatedOn: DateTimeOperationFilterInput
+	revision: IntOperationFilterInput
+	id: LongOperationFilterInput
+}
+
+input UserStatusSortInput {
+	name: SortEnumType @cost(weight: "10")
+	notes: SortEnumType @cost(weight: "10")
+	isActive: SortEnumType @cost(weight: "10")
+	createdBy: SortEnumType @cost(weight: "10")
+	createdOn: SortEnumType @cost(weight: "10")
+	updatedBy: SortEnumType @cost(weight: "10")
+	updatedOn: SortEnumType @cost(weight: "10")
+	revision: SortEnumType @cost(weight: "10")
+	id: SortEnumType @cost(weight: "10")
+}
+
+input UserTypeOperationFilterInput {
+	eq: UserType @cost(weight: "10")
+	neq: UserType @cost(weight: "10")
+	in: [UserType!] @cost(weight: "10")
+	nin: [UserType!] @cost(weight: "10")
+}
+
+"Defines when a policy shall be executed."
+enum ApplyPolicy {
+	"Before the resolver was executed."
+	BEFORE_RESOLVER
+	"After the resolver was executed."
+	AFTER_RESOLVER
+	"The policy is applied in the validation step before the execution."
+	VALIDATION
+}
+
+enum CampaignEvent {
+	CREATED
+	EXECUTED
+	SUSPENDED
+	EDITED
+}
+
+enum CampaignFrequency {
+	ONCE
+	DAILY
+	WEEKLY
+	MONTHLY
+	YEARLY
+}
+
+enum EventType {
+	INFORMATION
+	WARNING
+	ERROR
+}
+
+enum JsonValueKind {
+	UNDEFINED
+	OBJECT
+	ARRAY
+	STRING
+	NUMBER
+	TRUE
+	FALSE
+	NULL
+}
+
+enum MembershipStatus {
+	PENDING
+	APPROVED
+	REJECTED
+}
+
+enum NotificationEntity {
+	DOCUMENT
+}
+
+enum OutputFormat {
+	PDF
+	JPEG
+	EXCEL
+	HTML
+	CSV
+}
+
+enum ReportRendererType {
+	DESIGNED_BASED
+	QUERY_BASED
+}
+
+enum ServiceEvent {
+	IN_PROGRESS
+}
+
+enum SortEnumType {
+	ASC
+	DESC
+}
+
+enum UserActivityType {
+	ACCOUNT_CREATED
+	CREATE
+	UPDATE
+	DELETE
+	READ
+}
+
+enum UserEventType {
+	NOTIFICATIONS_UPDATED
+}
+
+enum UserType {
+	STAFF
+	STUDENT
+	CONSULTANT
+	HOUSE_OFFICER
+	RESIDENT
+}
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost(
+	"The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc."
+	weight: String!
+) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"The purpose of the `@listSize` directive is to either inform the static analysis about the size of returned lists (if that information is statically available), or to point the analysis to where to find that information."
+directive @listSize(
+	"The `assumedSize` argument can be used to statically define the maximum length of a list returned by a field."
+	assumedSize: Int
+	"The `slicingArguments` argument can be used to define which of the field's arguments with numeric type are slicing arguments, so that their value determines the size of the list returned by that field. It may specify a list of multiple slicing arguments."
+	slicingArguments: [String!]
+	"The `slicingArgumentDefaultValue` argument can be used to define a default value for a slicing argument, which is used if the argument is not present in a query."
+	slicingArgumentDefaultValue: Int
+	"The `sizedFields` argument can be used to define that the value of the `assumedSize` argument or of a slicing argument does not affect the size of a list returned by a field itself, but that of a list returned by one of its sub-fields."
+	sizedFields: [String!]
+	"The `requireOneSlicingArgument` argument can be used to inform the static analysis that it should expect that exactly one of the defined slicing arguments is present in a query. If that is not the case (i.e., if none or multiple slicing arguments are present), the static analysis may throw an error."
+	requireOneSlicingArgument: Boolean! = true
+) on FIELD_DEFINITION
+
+"The `@specifiedBy` directive is used within the type system definition language to provide a URL for specifying the behavior of custom scalar definitions."
+directive @specifiedBy(
+	"The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types."
+	url: String!
+) on SCALAR
+
+scalar Any
+
+"The `Date` scalar represents an ISO-8601 compliant date type."
+scalar Date
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime @specifiedBy(url: "https://www.graphql-scalars.com/date-time")
+
+scalar JSON
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long
+
+"The `TimeSpan` scalar represents an ISO-8601 compliant duration type."
+scalar TimeSpan
+
+"The `Upload` scalar type represents a file upload."
+scalar Upload
