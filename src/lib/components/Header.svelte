@@ -1,14 +1,18 @@
 <script lang="ts">
 	import logo from '$lib/assets/nta-logo.png';
-	import sesnetLogo from '$lib/assets/logo.svg';
+	// Removed: import sesnetLogo from '$lib/assets/logo.svg';
 	import { slide } from 'svelte/transition';
-	import { page } from '$app/stores'; // Import page store
+	import { page } from '$app/stores';
 
 	// Use $derived to reactively check the path
 	let isSesnet = $derived($page.url.pathname.startsWith('/sesnet'));
 
-	// Derived branding values
-	let currentLogo = $derived(isSesnet ? sesnetLogo : logo);
+	/**
+	 * For the SESNET logo, we use the string path directly from the static folder.
+	 * If your file is at 'static/logo.svg', the path is simply '/logo.svg'
+	 */
+	let currentLogo = $derived(isSesnet ? '/logo.svg' : logo);
+
 	let brandTitle = $derived(isSesnet ? 'SESNET' : 'NTAG');
 	let brandSubtitle = $derived(isSesnet ? 'Africa' : 'Ghana');
 
@@ -37,7 +41,6 @@
 			</div>
 		</a>
 
-		<!-- Desktop Navigation (Uncommented and kept if needed) -->
-		<!-- ... (Menu buttons logic) -->
+		<!-- ... rest of your code -->
 	</nav>
 </header>
