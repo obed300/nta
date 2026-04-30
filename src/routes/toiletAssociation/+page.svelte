@@ -374,7 +374,6 @@
 				type="button"
 				onclick={handleShowReview}
 				class="mx-auto w-full max-w-md px-4 py-3 text-base shadow-lg disabled:cursor-not-allowed disabled:bg-green-200 sm:text-lg lg:text-xl "
-				disabled={!turnstileToken}
 			>
 				Review Application
 			</Button>
