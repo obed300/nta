@@ -4,7 +4,7 @@
 	import { z } from 'zod';
 	import { Checkbox, Label } from 'flowbite-svelte';
 	import { toast } from '@rkosafo/cai.components';
-	import { createMember } from './svc';
+	import { createMember, readScopeOfServices } from './svc';
 
 	// Components
 	import InputField from '$lib/components/ui/InputField.svelte';
@@ -14,6 +14,8 @@
 	import { Turnstile } from 'svelte-turnstile';
 	import FileUpload from '$lib/components/ui/FileUpload.svelte';
 	import { goto } from '$app/navigation';
+	import SelectField from '$lib/components/ui/SelectField.svelte';
+	import { onMount } from 'svelte';
 
 	const toBase64 = (file: File): Promise<string> =>
 		new Promise((resolve, reject) => {
@@ -25,14 +27,46 @@
 
 	// 1. UI State & Form Reference
 	let isReviewing = $state(false);
-	let formElement: HTMLFormElement; // Reference for programmatic submit
+	let formElement: HTMLFormElement;
+	let scopeOfServiceOptions = $state<{ name: string; value: string }[]>([]);
+	let isLoading = $state(true);
 	const currentYear = new Date().getFullYear();
 	// 2. Schema
 	const schema = z.object({
 		companyName: z.string().min(1, 'Required'),
+		registerAs: z.string().min(1, 'Required'),
+		scopeOfServices: z.preprocess(
+			(val) => {
+				// If it's a string (from hidden input), parse it
+				if (typeof val === 'string') {
+					try {
+						return JSON.parse(val);
+					} catch {
+						return [];
+					}
+				}
+				return val;
+			},
+			z.array(z.string()).min(1, 'Pick at least one')
+		),
 		phone: z.string().min(10, 'Required'),
 		email: z.email(),
-		ghCardNumber: z.string().min(1, 'Ghana Card No. is required'),
+		ghCardNumber: z.preprocess(
+			(val) => {
+				if (typeof val !== 'string') return val;
+				let cleaned = val.toUpperCase().replace(/\s+/g, ''); // Uppercase and remove spaces
+
+				// If they typed it without dashes (e.g., GHA1234567890), insert them
+				if (/^GHA\d{10}$/.test(cleaned)) {
+					return `GHA-${cleaned.slice(3, 12)}-${cleaned.slice(12)}`;
+				}
+				return cleaned;
+			},
+			z
+				.string()
+				.min(1, 'Ghana Card No. is required')
+				.regex(/^GHA-\d{9}-\d$/, 'Invalid format. Expected: GHA-XXXXXXXXX-X')
+		),
 		ghanaCardScan: z.any().optional(),
 
 		houseNo: z.string().optional(),
@@ -96,10 +130,12 @@
 			try {
 				const input = {
 					name: values.companyName,
+					registerAs: values.registerAs,
 					organization: 'SESNET-AFRICA',
 					phoneNumber: values.phone,
 					email: values.email,
 					ghCardNumber: values.ghCardNumber,
+					scopeOfServices: values.scopeOfServices,
 					address: JSON.stringify({
 						houseNo: values.houseNo,
 						street: values.streetName,
@@ -177,6 +213,29 @@
 		}
 	};
 	const employeeCategories = ['Mason', 'Carpenter', 'Tiler', 'Painter', 'Plumber'];
+
+	onMount(async () => {
+		try {
+			const res = await readScopeOfServices();
+
+			if (res?.success && Array.isArray(res.data)) {
+				scopeOfServiceOptions = res.data.map((item: string) => ({
+					name: item,
+					value: item
+				}));
+			}
+		} catch (e) {
+			console.error('Failed to fetch scope of services:', e);
+		} finally {
+			isLoading = false;
+		}
+	});
+
+	const registerOptions = [
+		{ name: 'Individual Artisan', value: 'Individual Artisan' },
+		{ name: 'Enterprise or Company', value: 'Enterprise or Company' },
+		{ name: 'Small Work Constructors', value: 'Small Work Constructors' }
+	];
 </script>
 
 {#snippet ReviewItem(label: string, value: string | undefined)}
@@ -201,6 +260,20 @@
 				<div class="grid grid-cols-1 gap-6">
 					<InputField label="Name of Enterprise" name="companyName" errors={$errors.companyName} />
 					<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+						<SelectField
+							label="Register As"
+							name="registerAs"
+							options={registerOptions}
+							errors={$errors.registerAs}
+						/>
+						<SelectField
+							label="Scope Of Services"
+							name="scopeOfServices"
+							multiple
+							options={scopeOfServiceOptions}
+							errors={errors.scopeOfServices}
+							placeholder={'Select applicable toilet technology option(s)'}
+						/>
 						<InputField label="Phone Number" name="phone" errors={$errors.phone} />
 						<InputField label="Email Address" name="email" type="email" errors={$errors.email} />
 						<InputField label="Ghana Card No." name="ghCardNumber" errors={$errors.ghCardNumber} />
@@ -388,6 +461,24 @@
 
 				<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 					<h4 class="mb-4 text-xs font-black tracking-widest text-emerald-600 uppercase">
+						Registration & Services
+					</h4>
+					<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+						{@render ReviewItem('Register As', $data.registerAs)}
+						{@render ReviewItem('Ghana Card No.', $data.ghCardNumber)}
+						<div class="md:col-span-1">
+							{@render ReviewItem(
+								'Scope of Services',
+								Array.isArray($data.scopeOfServices)
+									? $data.scopeOfServices.join(', ')
+									: $data.scopeOfServices
+							)}
+						</div>
+					</div>
+				</div>
+
+				<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+					<h4 class="mb-4 text-xs font-black tracking-widest text-emerald-600 uppercase">
 						Physical Address
 					</h4>
 					<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -406,6 +497,51 @@
 						<div class="md:col-span-3">
 							{@render ReviewItem('Landmark', $data.landmark)}
 						</div>
+					</div>
+				</div>
+
+				<!-- After Physical Address section -->
+				<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+					<h4 class="mb-4 text-xs font-black tracking-widest text-emerald-600 uppercase">
+						Operational Details
+					</h4>
+					<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+						{@render ReviewItem('Operational Area', $data.operationalArea)}
+						{@render ReviewItem('Year Established', String($data.yearEstablished ?? '—'))}
+						{@render ReviewItem('Company Reg. No.', $data.regNo)}
+					</div>
+					<div class="mt-4">
+						{@render ReviewItem('Description', $data.description)}
+					</div>
+				</div>
+
+				<!-- After Operational Details -->
+				<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+					<h4 class="mb-4 text-xs font-black tracking-widest text-emerald-600 uppercase">
+						Employee Details
+					</h4>
+					<div
+						class="hidden grid-cols-4 gap-4 px-2 pb-2 text-[10px] font-black tracking-wider text-slate-400 uppercase md:grid"
+					>
+						<div>Category</div>
+						<div>Total</div>
+						<div>Trained</div>
+						<div>Certified Names</div>
+					</div>
+					<div class="space-y-3">
+						{#each ['Mason', 'Carpenter', 'Tiler', 'Painter', 'Plumber'] as cat}
+							<div
+								class="grid grid-cols-1 gap-3 rounded-xl border border-slate-100 bg-slate-50/50 p-3 md:grid-cols-4"
+							>
+								<span class="text-xs font-black tracking-widest text-slate-400 uppercase md:hidden"
+									>Category</span
+								>
+								<span class="font-bold text-slate-700">{cat}</span>
+								{@render ReviewItem('Total', String($data.employees?.[cat]?.total ?? 0))}
+								{@render ReviewItem('Trained', String($data.employees?.[cat]?.trained ?? 0))}
+								{@render ReviewItem('Certified', $data.employees?.[cat]?.certified || '—')}
+							</div>
+						{/each}
 					</div>
 				</div>
 
