@@ -17,9 +17,7 @@ const config = {
 			$data: path.resolve('.', 'src', 'data'),
 			$houdini: path.resolve('.', '$houdini')
 		},
-		adapter: adapter({
-			fallback: 'index.html'
-		}),
+		adapter: adapter(),
 		prerender: {
 			handleHttpError: 'warn' // ignore 404s instead of crashing
 		}
