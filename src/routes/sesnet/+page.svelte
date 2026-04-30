@@ -105,7 +105,7 @@
 		// products: z.array(z.string()).default([]),
 		declarantName: z.string().min(2, 'Name is required'),
 		declarantPosition: z.string().min(2, 'Position is required'),
-		token: z.string().min(1, 'Please complete the security check'),
+		// token: z.string().min(1, 'Please complete the security check'),
 		declarationConfirmed: z.literal(true, {
 			message: 'You must confirm the declaration'
 		})
@@ -398,7 +398,7 @@
 				{/if}
 			</section>
 
-			<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+			<!-- <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 				<h4 class="mb-4 text-xs font-black tracking-widest text-emerald-600 uppercase">
 					Security Check
 				</h4>
@@ -418,7 +418,7 @@
 				{#if $errors.token}
 					<p class="mt-2 text-xs font-semibold text-red-500">{$errors.token}</p>
 				{/if}
-			</div>
+			</div> -->
 
 			<Button
 				type="button"
