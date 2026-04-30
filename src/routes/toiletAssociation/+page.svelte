@@ -115,7 +115,7 @@
 			if (result?.success) {
 				toast.success('Registration successful');
 				isReviewing = false;
-				goto('/');
+				goto('https://ntaghana.org');
 			} else {
 				toast.error(result?.message || 'Submission failed');
 			}

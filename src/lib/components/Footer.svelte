@@ -1,3 +1,21 @@
+<script lang="ts">
+	import { page } from '$app/stores';
+
+	// Reactive check for the sesnet route
+	let isSesnet = $derived($page.url.pathname.startsWith('/sesnet'));
+
+	// Derived content based on branding
+	const branding = $derived({
+		est: isSesnet ? 'Est. Africa' : 'Est. Ghana',
+		title: isSesnet ? 'SESNET<br />Africa' : 'National Toilet<br />Association Ghana',
+		desc: isSesnet
+			? 'Empowering sanitation professionals through sustainable networking and innovative solutions across the continent.'
+			: 'Professionalising the sanitation sector and ensuring dignity through clean facilities across Ghana.',
+		email: isSesnet ? 'info@sesnet-africa.org' : 'info@ntag-ghana.org',
+		copyright: isSesnet ? 'Sesnet Africa' : 'NTAG Ghana'
+	});
+</script>
+
 <footer class="bg-emerald-950 pt-16 pb-10 text-emerald-50">
 	<div class="mx-auto max-w-5xl px-6 lg:px-12">
 		<!-- Top -->
@@ -5,14 +23,13 @@
 			<!-- Brand -->
 			<div>
 				<p class="mb-3 font-mono text-[0.65rem] tracking-[0.18em] text-emerald-500 uppercase">
-					Est. Ghana
+					{branding.est}
 				</p>
 				<h3 class="mb-4 font-serif text-xl leading-snug font-bold text-white">
-					National Toilet<br />Association Ghana
+					{@html branding.title}
 				</h3>
 				<p class="max-w-[36ch] text-sm leading-relaxed text-emerald-300/60">
-					Professionalising the sanitation sector and ensuring dignity through clean facilities
-					across Ghana.
+					{branding.desc}
 				</p>
 			</div>
 
@@ -51,26 +68,28 @@
 					Contact
 				</p>
 				<address class="space-y-2 not-italic">
-					<p class="text-sm text-emerald-200/60">Accra, Greater Accra Region</p>
+					<p class="text-sm text-emerald-200/60">
+						{isSesnet ? 'Africa Region' : 'Accra, Greater Accra Region'}
+					</p>
 
-					<!-- Fixed: Added the <a tag here -->
 					<a
-						href="mailto:info@ntag-ghana.org"
+						href="mailto:{branding.email}"
 						class="border-b border-emerald-800 pb-0.5 text-sm text-emerald-200/60 transition-colors hover:text-white"
 					>
-						info@ntag-ghana.org
+						{branding.email}
 					</a>
 				</address>
 			</div>
 		</div>
 
-		<!-- Divider - Fixed: Use </div> instead of self-closing /> for standard HTML compatibility -->
+		<!-- Divider -->
 		<div class="mt-14 border-t border-emerald-900/60"></div>
 
 		<!-- Bottom bar -->
 		<div class="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
 			<p class="font-mono text-[0.65rem] text-emerald-600">
-				© {new Date().getFullYear()} NTAG Ghana. All rights reserved.
+				© {new Date().getFullYear()}
+				{branding.copyright}. All rights reserved.
 			</p>
 			<div class="flex gap-6">
 				<a

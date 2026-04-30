@@ -166,7 +166,7 @@
 				if (result?.success) {
 					toast.success('Registration Submitted Successfully');
 					isReviewing = false;
-					goto('/');
+					goto('https://afrisesnet.org/index.html');
 				} else {
 					toast.error('Server Error: ' + result.message);
 				}
