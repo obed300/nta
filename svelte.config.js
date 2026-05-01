@@ -1,12 +1,12 @@
 import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+// import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
-	preprocess: vitePreprocess(),
+	// preprocess: vitePreprocess(),
 
 	kit: {
 		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
@@ -18,9 +18,6 @@ const config = {
 			$houdini: path.resolve('.', '$houdini')
 		},
 		adapter: adapter(),
-		prerender: {
-			handleHttpError: 'warn' // ignore 404s instead of crashing
-		}
 	}
 };
 
