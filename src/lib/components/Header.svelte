@@ -2,10 +2,10 @@
 	import logo from '$lib/assets/nta-logo.png';
 	// Removed: import sesnetLogo from '$lib/assets/logo.svg';
 	import { slide } from 'svelte/transition';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	// Use $derived to reactively check the path
-	let isSesnet = $derived($page.url.pathname.startsWith('/sesnet'));
+	let isSesnet = $derived(page.url.pathname.startsWith('/sesnet'));
 
 	/**
 	 * For the SESNET logo, we use the string path directly from the static folder.
